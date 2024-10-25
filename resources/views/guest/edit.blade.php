@@ -89,6 +89,12 @@
                                     </div>
                                 </div>
                                 <div class="row mt-2">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <label for="address">ที่อยู่ / Address</label><br>
+                                        <textarea type="text" id="address" name="address" rows="5" cols="25" class="textarea form-control" aria-label="With textarea" required>{{$Guest->Address}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
                                     <div class="col-lg-6 col-md-6 col-sm-12"><label for="country">ประเทศ / Country</label><br>
                                         <select name="countrydata" id="countrySelect" class="select2" onchange="showcityInput()">
                                             @foreach($country as $item)
@@ -174,12 +180,7 @@
                                     </div>
                                     @endif
                                 </div>
-                                <div class="row mt-2">
-                                    <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <label for="address">ที่อยู่ / Address</label><br>
-                                        <textarea type="text" id="address" name="address" rows="5" cols="25" class="textarea form-control" aria-label="With textarea" required>{{$Guest->Address}}</textarea>
-                                    </div>
-                                </div>
+
                                 <div class="row mt-2">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <span for="Company_Phone" class="flex-container">
@@ -289,8 +290,8 @@
                                         <button type="button" class="btn btn-color-green lift btn_modal"  data-bs-toggle="modal" data-bs-target="#CreateCompany"><i class="fa fa-plus"></i> Add tax invoice</button>
                                     </div>
                                     <div class="modal fade" id="CreateCompany" tabindex="-1" aria-labelledby="PrenameModalCenterTitle" style="display: none;" aria-hidden="true">
-                                        <div class="modal-dialog  modal-lg modal-dialog-centered">
-                                            <div class="modal-content">
+                                        <div class="modal-dialog  modal-lg modal-dialog-centered" style="min-width: 50%">
+                                            <div class="modal-content ">
                                                 <div class="modal-header bg-color-green">
                                                     <h5 class="modal-title text-white" id="PrenameModalCenterTitle">Add tax invoice</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -299,7 +300,7 @@
                                                     @csrf
                                                     <div class="modal-body">
                                                         <div class="col-sm-12 col-12">
-                                                            <div class="col-sm-4 col-4">
+                                                            <div class="col-lg-4 col-md-12 col-sm-12 ">
                                                                 <span for="Country">Add Tax</span>
                                                                 <select name="TaxSelectA" id="TaxSelectA" class="select21" onchange="showTaxInput()">
                                                                     <option value="Company">Company</option>
@@ -309,7 +310,7 @@
                                                             <div id="Com" style="display: block">
                                                                 <div class="col-sm-12 mt-2">
                                                                     <div class="row">
-                                                                        <div class="col-sm-6 col-6">
+                                                                        <div class="col-lg-6 col-md-12 col-sm-12 ">
                                                                             <label for="Company_type_tax">ประเภทบริษัท / Company Type</label>
                                                                             <select name="Company_type_tax" id="Company_type_tax" class="select21" required>
                                                                                 <option value=""></option>
@@ -318,15 +319,15 @@
                                                                                 @endforeach
                                                                             </select>
                                                                         </div>
-                                                                        <div class="col-sm-6 col-6">
+                                                                        <div class="col-lg-6 col-md-12 col-sm-12 ">
                                                                             <label for="Company_Name">ชื่อบริษัท / Company Name</label>
                                                                             <input type="text" id="Company_Name_tax" class="form-control" name="Company_Name_tax" maxlength="70" required>
                                                                         </div>
-                                                                        <div class="col-sm-6 col-6 mt-2">
+                                                                        <div class="col-lg-6 col-md-12 col-sm-12 mt-2">
                                                                             <label for="Branch">สาขา / Company Branch</label>
                                                                             <input type="text" id="BranchTax" name="BranchTax" class="form-control" maxlength="70" required>
                                                                         </div>
-                                                                        <div class="col-sm-6 col-6 mt-2">
+                                                                        <div class="col-lg-6 col-md-12 col-sm-12 mt-2">
                                                                             <label for="Identification">เลขประจำตัวผู้เสียภาษี / Tax identification number</label><br>
                                                                             <input type="text" id="IdentificationCompany" class="form-control idcard" name="Identification" maxlength="17" placeholder="เลขประจำตัวผู้เสียภาษี" required >
                                                                         </div>
@@ -336,7 +337,7 @@
                                                             <div id="Title" style="display: none;">
                                                                 <div class="col-sm-12 mt-2">
                                                                     <div class="row">
-                                                                        <div class="col-sm-6 col-6" >
+                                                                        <div class="col-lg-6 col-md-12 col-sm-12 " >
                                                                             <label for="prefix">คำนำหน้า / Title</label>
                                                                             <select name="prefix" id="PrefaceSelectCom" class="select21" disabled required>
                                                                                     <option value=""></option>
@@ -345,24 +346,39 @@
                                                                                     @endforeach
                                                                             </select>
                                                                         </div>
-                                                                        <div class="col-sm-6 col-6">
+                                                                        <div class="col-lg-6 col-md-12 col-sm-12 ">
                                                                             <label for="first_name">First Name</label>
                                                                             <input type="text" id="first_nameCom" class="form-control" name="first_nameCom"maxlength="70" disabled required>
                                                                         </div>
-                                                                        <div class="col-sm-6 col-6 mt-2">
+                                                                        <div class="col-lg-6 col-md-12 col-sm-12  mt-2">
                                                                             <label for="last_name" >Last Name</label>
                                                                             <input type="text" id="last_nameCom" class="form-control" name="last_nameCom"maxlength="70" disabled required>
                                                                         </div>
-                                                                        <div class="col-sm-6 col-6 mt-2">
+                                                                        <div class="col-lg-6 col-md-12 col-sm-12  mt-2">
                                                                             <label for="Identification">เลขบัตรประจำตัวประชาชน / Identification number</label><br>
                                                                             <input type="text" id="IdentificationName" class="form-control idcard" name="Identification" maxlength="17" placeholder="เลขประจำตัวผู้เสียภาษี"disabled required >
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            {{-- <div  class="col-sm-12 col-12 row mt-2">
+                                                                <div class="col-lg-4 col-md-4 col-sm-12">
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                                                        <span class="form-check-label" for="flexRadioDefault1">
+                                                                            ที่อยู่ตามบริษัท
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div> --}}
+
                                                             <div class="col-sm-12 col-12">
+                                                                <div >
+                                                                    <span for="Address">Address</span>
+                                                                    <textarea type="text" id="addressAgent" name="addressAgent" rows="3" cols="25" class="form-control" aria-label="With textarea" required></textarea>
+                                                                </div>
                                                                 <div class="row mt-2">
-                                                                    <div class="col-sm-4 col-4">
+                                                                    <div class="col-lg-4 col-md-12 col-sm-12 ">
                                                                         <span for="Country">Country</span>
                                                                         <select name="countrydataA" id="countrySelectA" class="select21" onchange="showcityAInputTax()">
                                                                             @foreach($country as $item)
@@ -372,7 +388,7 @@
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
-                                                                    <div class="col-sm-4 col-4" >
+                                                                    <div class="col-lg-4 col-md-12 col-sm-12 " >
                                                                         <span for="City">City</span>
                                                                         <select name="cityA" id="provincetax" class="select21" onchange="provinceTax()" style="width: 100%;">
                                                                             <option value=""></option>
@@ -381,34 +397,31 @@
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
-                                                                    <div class="col-sm-4 col-4">
+                                                                    <div class="col-lg-4 col-md-12 col-sm-12">
                                                                         <span for="Amphures">Amphures</span>
-                                                                        <select name="amphuresA" id="amphuresT" class="select21" onchange="amphuresTax()" >
+                                                                        <select name="amphuresA" id ="amphuresT" class="select21" onchange="amphuresTax()" style="width: 100%;">
                                                                             <option value=""></option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row mt-2">
-                                                                    <div class="col-sm-4 col-4">
+                                                                    <div class="col-lg-4 col-md-12 col-sm-12">
                                                                         <span for="Tambon">Tambon</span>
                                                                         <select name="TambonA" id ="TambonT" class="select21" onchange="TambonTax()" style="width: 100%;">
                                                                             <option value=""></option>
                                                                         </select>
                                                                     </div>
-                                                                    <div class="col-sm-4 col-4">
+                                                                    <div class="col-lg-4 col-md-12 col-sm-12">
                                                                         <span for="zip_code">zip_code</span>
                                                                         <select name="zip_codeA" id ="zip_codeT" class="select21"  style="width: 100%;">
                                                                         </select>
                                                                     </div>
-                                                                    <div class="col-sm-4 col-4">
+                                                                    <div class="col-lg-4 col-md-12 col-sm-12">
                                                                         <span for="Email">Email</span>
                                                                         <input type="text" id="EmailAgent" class="form-control" name="EmailAgent"maxlength="70" required>
                                                                     </div>
                                                                 </div>
-                                                                <div>
-                                                                    <span for="Address">Address</span>
-                                                                    <textarea type="text" id="addressAgent" name="addressAgent" rows="3" cols="25" class="form-control" aria-label="With textarea" required></textarea>
-                                                                </div>
+
                                                                 <div class="row mt-2">
                                                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                                                         <span for="Company_Phone" class="flex-container">
@@ -427,6 +440,99 @@
                                                                     </div>
                                                                 </div>
                                                                 <script>
+                                                                    document.addEventListener('DOMContentLoaded', function() {
+                                                                        // ส่วนของกดสำนักงานใหญ่
+                                                                        const radio1 = document.getElementById('flexRadioDefault2');
+                                                                        radio1.addEventListener('change', function() {
+                                                                            if (radio1.checked) {
+                                                                                var countrySelect =$('#countrySelect').val();
+                                                                                console.log(countrySelect);
+
+                                                                                $('#countrySelectA').val(countrySelect).trigger('change');
+                                                                                var province = document.getElementById('province').value;
+                                                                                var amphures = document.getElementById('amphures').value;
+                                                                                var Tambon = document.getElementById('Tambon').value;
+                                                                                var zip_code = document.getElementById('zip_code').value;
+                                                                                var address = document.getElementById('address').value;
+
+                                                                                if (countrySelect === 'Thailand') {
+
+                                                                                    jQuery.ajax({
+                                                                                        type: "GET",
+                                                                                        url: "{!! url('/guest/provincesA/" + province + "') !!}",
+                                                                                        datatype: "JSON",
+                                                                                        async: false,
+                                                                                        success: function(result) {
+                                                                                            jQuery.each(result.data, function(key, value) {
+                                                                                                var provinceA = new Option(value.name_th, value.id);
+                                                                                                if (value.id == province) {
+                                                                                                    provinceA.selected = true;
+                                                                                                }
+                                                                                                $('#provincetax').append(provinceA);
+                                                                                            });
+                                                                                        },
+                                                                                    })
+
+                                                                                    jQuery.ajax({
+                                                                                        type: "GET",
+                                                                                        url: "{!! url('/guest/amphuresA/" + province + "') !!}",
+                                                                                        datatype: "JSON",
+                                                                                        async: false,
+                                                                                        success: function(result) {
+                                                                                            jQuery.each(result.data, function(key, value) {
+                                                                                                var amphuresA = new Option(value.name_th, value.id);
+                                                                                                if (value.id == amphures) {
+                                                                                                    amphuresA.selected = true;
+                                                                                                }
+                                                                                                console.log(amphuresA);
+                                                                                                $('#amphuresT').append(amphuresA);
+                                                                                            });
+                                                                                        },
+                                                                                    })
+
+
+
+                                                                                    $.ajax({
+                                                                                        type: "GET",
+                                                                                        url: "{!! url('/guest/TambonA/" + amphures + "') !!}",
+                                                                                        datatype: "JSON",
+                                                                                        async: false,
+                                                                                        success: function(result) {
+                                                                                            jQuery.each(result.data, function(key, value) {
+                                                                                                var TambonA = new Option(value.name_th, value.id);
+                                                                                                if (value.id == Tambon) {
+                                                                                                    TambonA.selected = true;
+                                                                                                }
+                                                                                                $('#TambonT').append(TambonA);
+
+                                                                                            });
+                                                                                        },
+                                                                                    })
+                                                                                    $.ajax({
+                                                                                        type: "GET",
+                                                                                        url: "{!! url('/guest/districtsA/" + Tambon + "') !!}",
+                                                                                        datatype: "JSON",
+                                                                                        async: false,
+                                                                                        success: function(result) {
+                                                                                            console.log(result);
+                                                                                            jQuery.each(result.data, function(key, value) {
+                                                                                                var zip_codeA = new Option(value.zip_code, value.zip_code);
+                                                                                                if (value.zip_code == zip_code) {
+                                                                                                    zip_codeA.selected = true;
+                                                                                                }
+                                                                                                $('#zip_codeT').append(zip_codeA);
+                                                                                                console.log(zip_codeA);
+                                                                                            });
+                                                                                        },
+                                                                                    })
+                                                                                } else {
+                                                                                    $('#provincetax, #amphuresT, #TambonT, #zip_codeT').empty();
+                                                                                    $('#provincetax, #amphuresT, #TambonT, #zip_codeT').prop('disabled', true); // ปิดการใช้งาน
+                                                                                }
+                                                                                $('#addressAgent').val(address);
+                                                                                }
+                                                                            });
+                                                                        });
                                                                     function showTaxInput() {
                                                                         var TaxSelectA = document.getElementById("TaxSelectA");
                                                                         var Company_type_tax = document.getElementById("Company_type_tax");
@@ -497,13 +603,10 @@
                                                                             zipCodeSelect.disabled = false;
 
                                                                             // เรียกใช้ฟังก์ชัน select_amphures() เพื่อเปิดการใช้งาน select box ที่มี id เป็น amphures, Tambon, และ zip_code
-                                                                            amphuresT();
                                                                         }
                                                                     }
                                                                     function provinceTax(){
                                                                         var provinceAgentT = $('#provincetax').val();
-                                                                        console.log(provinceAgentT);
-
                                                                         jQuery.ajax({
                                                                             type:   "GET",
                                                                             url:    "{!! url('/guest/amphuresT/"+provinceAgentT+"') !!}",
@@ -576,19 +679,7 @@
                                         </div>
                                     </div>
                                     <div style="min-height: 70vh;" class="mt-2">
-                                        <table id="guest-TaxTable" class="example2 ui striped table nowrap unstackable hover">
-                                            <caption class="caption-top">
-                                                    <div class="flex-end-g2">
-                                                        <label class="entriespage-label">entries per page :</label>
-                                                        <select class="entriespage-button" id="search-per-page-guest-Tax" onchange="getPageTax(1, this.value, 'guest-Tax')"> <!-- ชือนำหน้าตาราง, ชื่อ Route -->
-                                                            <option value="10" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 10 && @$_GET['table'] == "guest-Tax" ? 'selected' : '' }}>10</option>
-                                                            <option value="25" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 25 && @$_GET['table'] == "guest-Tax" ? 'selected' : '' }}>25</option>
-                                                            <option value="50" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 50 && @$_GET['table'] == "guest-Tax" ? 'selected' : '' }}>50</option>
-                                                            <option value="100" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 100 && @$_GET['table'] == "guest-Tax" ? 'selected' : '' }}>100</option>
-                                                        </select>
-                                                        <input class="search-button search-data-guest-Tax" id="guest-Tax" style="text-align:left;" placeholder="Search" />
-                                                    </div>
-                                            </caption>
+                                        <table class="table-together striped table nowrap unstackable hover">
                                             <thead>
                                                 <tr>
                                                     <th class="text-center" data-priority="1">No</th>
@@ -647,37 +738,13 @@
                                                     @endforeach
                                                 @endif
                                             </tbody>
-                                            <input type="hidden" id="profile-guest-Tax" name="profile-guest" value="{{$Guest->Profile_ID}}">
-                                            <input type="hidden" id="get-total-guest-Tax" value="{{ $guesttax->total() }}">
-                                            <input type="hidden" id="currentPage-guest-Tax" value="1">
-                                            <caption class="caption-bottom">
-                                                <div class="md-flex-bt-i-c">
-                                                    <p class="py2" id="guest-Tax-showingEntries">{{ showingEntriesTableTax($guesttax, 'guest-Tax') }}</p>
-                                                        <div id="guest-Tax-paginate">
-                                                            {!! paginateTableTax($guesttax, 'guest-Tax') !!} <!-- ข้อมูล, ชื่อตาราง -->
-                                                        </div>
-                                                </div>
-                                            </caption>
                                         </table>
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="nav-Visit" role="tabpanel" rel="0">
                                 <div style="min-height: 70vh;" class="mt-2">
-                                    <table id="guest-VisitTable" class="example2 ui striped table nowrap unstackable hover">
-                                        <caption class="caption-top">
-                                            <div>
-                                                <div class="flex-end-g2">
-                                                    <label class="entriespage-label">entries per page :</label>
-                                                    <select class="entriespage-button" id="search-per-page-guest-Visit" onchange="getPageVisit(1, this.value, 'guest-Visit')">
-                                                        <option value="10" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 10 && @$_GET['table'] == "guest-Visit" ? 'selected' : '' }}>10</option>
-                                                        <option value="25" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 25 && @$_GET['table'] == "guest-Visit" ? 'selected' : '' }}>25</option>
-                                                        <option value="50" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 50 && @$_GET['table'] == "guest-Visit" ? 'selected' : '' }}>50</option>
-                                                        <option value="100" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 100 && @$_GET['table'] == "guest-Visit" ? 'selected' : '' }}>100</option>
-                                                    </select>
-                                                    <input class="search-button search-data-guest-Visit" id="guest-Visit" style="text-align:left;" placeholder="Search" />
-                                                </div>
-                                        </caption>
+                                    <table class="table-together striped table nowrap unstackable hover">
                                         <thead>
                                             <tr>
                                                 <th class="text-center" data-priority="1">No</th>
@@ -750,17 +817,6 @@
                                                 @endforeach
                                             @endif
                                         </tbody>
-                                        <input type="hidden" id="profile-guest-Visit" name="profile-company" value="{{$Guest->Profile_ID}}">
-                                        <input type="hidden" id="get-total-guest-Visit" value="{{ $Quotation->total() }}">
-                                        <input type="hidden" id="currentPage-guest-Visit" value="1">
-                                        <caption class="caption-bottom">
-                                            <div class="md-flex-bt-i-c">
-                                                <p class="py2" id="guest-Visit-showingEntries">{{ showingEntriesTableVisit($Quotation, 'guest-Visit') }}</p>
-                                                    <div id="guest-Visit-paginate">
-                                                        {!! paginateTableVisit($Quotation, 'guest-Visit') !!} <!-- ข้อมูล, ชื่อตาราง -->
-                                                    </div>
-                                            </div>
-                                        </caption>
                                     </table>
                                 </div>
                             </div>
@@ -774,19 +830,7 @@
                             </div>
                             <div class="tab-pane fade" id="nav-User" role="tabpanel" rel="0">
                                 <div style="min-height: 70vh;" class="mt-2">
-                                    <caption class="caption-top">
-                                        <div class="flex-end-g2">
-                                            <label class="entriespage-label">entries per page :</label>
-                                            <select class="entriespage-button" id="search-per-page-guest" onchange="getPage(1, this.value, 'guest')"> <!-- ชือนำหน้าตาราง, ชื่อ Route -->
-                                                <option value="10" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 10 && @$_GET['table'] == "guest" ? 'selected' : '' }}>10</option>
-                                                <option value="25" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 25 && @$_GET['table'] == "guest" ? 'selected' : '' }}>25</option>
-                                                <option value="50" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 50 && @$_GET['table'] == "guest" ? 'selected' : '' }}>50</option>
-                                                <option value="100" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 100 && @$_GET['table'] == "guest" ? 'selected' : '' }}>100</option>
-                                            </select>
-                                            <input class="search-button search-data-log" id="guest" style="text-align:left;" placeholder="Search" />
-                                        </div>
-                                    </caption>
-                                    <table id="guestTable" class="example ui striped table nowrap unstackable hover">
+                                    <table class="table-together striped table nowrap unstackable hover">
                                         <thead>
                                             <tr>
                                                 <th  class="text-center">No</th>
@@ -810,7 +854,7 @@
                                                         // แยกข้อมูล content ออกเป็น array
                                                         $contentArray = explode('+', $item->content);
                                                     @endphp
-                                                    <td style="text-align: left;">
+                                                    <td style="text-align: left;" class="tleft">
 
                                                         <b style="color:#0000FF ">{{$item->Category}}</b>
                                                         @foreach($contentArray as $contentItem)
@@ -822,17 +866,6 @@
                                             @endif
                                         </tbody>
                                     </table>
-                                    <input type="hidden" id="profile-guest" name="profile-guest" value="{{$Guest->Profile_ID}}">
-                                    <input type="hidden" id="get-total-guest" value="{{ $log->total() }}">
-                                    <input type="hidden" id="currentPage-guest" value="1">
-                                    <caption class="caption-bottom">
-                                        <div class="md-flex-bt-i-c">
-                                            <p class="py2" id="guest-showingEntries">{{ showingEntriesTable($log, 'guest') }}</p>
-                                            <div id="guest-paginate">
-                                                {!! paginateTable($log, 'guest') !!} <!-- ข้อมูล, ชื่อตาราง -->
-                                            </div>
-                                        </div>
-                                    </caption>
                                 </div>
                             </div>
                         </div>
@@ -841,7 +874,12 @@
             </div>
         </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/helper/searchTable.js')}}"></script>
     @include('script.script')
     <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/formatNumber.js')}}"></script>
@@ -1061,276 +1099,7 @@
         });
 
     </script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<!-- dataTable -->
-<script src="https://cdn.datatables.net/2.1.2/js/dataTables.js"></script>
-<script src="https://cdn.datatables.net/2.1.2/js/dataTables.semanticui.js"></script>
-<script src="https://cdn.datatables.net/responsive/3.0.2/js/dataTables.responsive.js"></script>
-<script src="https://cdn.datatables.net/responsive/3.0.2/js/responsive.semanticui.js"></script>
-<script type="text/javascript" src="{{ asset('assets/helper/searchTableLogGuest.js')}}"></script>
     <script>
-       const table_name = ['guest-TaxTable','guestTable','guest-VisitTable'];
-        $(document).ready(function() {
-            for (let index = 0; index < table_name.length; index++) {
-                console.log(table_name);
-
-                new DataTable('#'+table_name[index], {
-                    searching: false,
-                    paging: false,
-                    info: false,
-                    columnDefs: [{
-                        className: 'dtr-control',
-                        orderable: true,
-                        target: null,
-                    }],
-                    order: [0, 'asc'],
-                    responsive: {
-                        details: {
-                            type: 'column',
-                            target: 'tr'
-                        }
-                    }
-                });
-            }
-        });
-        function nav(id) {
-            for (let index = 0; index < table_name.length; index++) {
-                $('#'+table_name[index]).DataTable().destroy();
-                new DataTable('#'+table_name[index], {
-                    searching: false,
-                    paging: false,
-                    info: false,
-                    columnDefs: [{
-                        className: 'dtr-control',
-                        orderable: true,
-                        target: null,
-                    }],
-                    order: [0, 'asc'],
-                    responsive: {
-                        details: {
-                            type: 'column',
-                            target: 'tr'
-                        }
-                    }
-                });
-            }
-        }
-        $(document).on('keyup', '.search-data-log', function () {
-            var id = $(this).attr('id');
-            var search_value = $(this).val();
-            var table_name = id+'Table';
-            var guest_profile = $('#profile-guest').val();
-            var type_status = $('#status').val();
-            var total = parseInt($('#get-total-'+id).val());
-            var getUrl = window.location.pathname;
-            console.log(search_value);
-
-
-                $('#'+table_name).DataTable().destroy();
-                var table = $('#'+table_name).dataTable({
-                    searching: false,
-                    paging: false,
-                    info: false,
-                    ajax: {
-                    url: '/logguest-search-table',
-                    type: 'POST',
-                    dataType: "json",
-                    cache: false,
-                    data: {
-                        search_value: search_value,
-                        table_name: table_name,
-                        guest_profile: guest_profile,
-                        status: type_status,
-                    },
-                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                },
-                "initComplete": function (settings,json){
-
-                    if ($('#'+id+'Table .dataTable_empty').length == 0) {
-                        var count = $('#'+id+'Table tr').length - 1;
-                    }else{
-                        var count = 0;
-                    }
-                    if (search_value == '') {
-                        count_total = total;
-                    }else{
-                        count_total = count;
-                    }
-                    $('#'+id+'-paginate').children().remove().end();
-                    $('#'+id+'-showingEntries').text(showingEntriesSearch(1,count_total, id));
-                    $('#'+id+'-paginate').append(paginateSearch(count_total, id, getUrl));
-                },
-                    columnDefs: [
-                                { targets: [0, 2, 3,4], className: 'dt-center td-content-center' },
-                    ],
-                    order: [0, 'asc'],
-                    responsive: {
-                        details: {
-                            type: 'column',
-                            target: 'tr'
-                        }
-                    },
-                    columns: [
-                        { data: 'id', "render": function (data, type, row, meta) { return meta.row + meta.settings._iDisplayStart + 1; } },
-                        { data: 'Category' },
-                        { data: 'type' },
-                        { data: 'Created_by' },
-                        { data: 'created_at' },
-                        { data: 'Content' },
-                    ],
-
-                });
-
-
-
-
-            document.getElementById(id).focus();
-        });
-        $(document).on('keyup', '.search-data-guest-Tax', function () {
-            var id = $(this).attr('id');
-            var search_value = $(this).val();
-            var table_name = id+'Table';
-            var guest_profile = $('#profile-guest').val();
-            var type_status = $('#status').val();
-            var total = parseInt($('#get-total-'+id).val());
-            var getUrl = window.location.pathname;
-                $('#'+table_name).DataTable().destroy();
-                var table = $('#'+table_name).dataTable({
-                    searching: false,
-                    paging: false,
-                    info: false,
-                    ajax: {
-                    url: '/tax-guest-search-table',
-                    type: 'POST',
-                    dataType: "json",
-                    cache: false,
-                    data: {
-                        search_value: search_value,
-                        table_name: table_name,
-                        guest_profile: guest_profile,
-                        status: type_status,
-                    },
-                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                },
-                    "initComplete": function (settings,json){
-
-                        if ($('#'+id+'Table .dataTable_empty').length == 0) {
-                            var count = $('#'+id+'Table tr').length - 1;
-                        }else{
-                            var count = 0;
-                        }
-                        if (search_value == '') {
-                            count_total = total;
-                        }else{
-                            count_total = count;
-                        }
-                        $('#'+id+'-paginate').children().remove().end();
-                        $('#'+id+'-showingEntries').text(showingEntriesSearchTax(1,count_total, id));
-                        $('#'+id+'-paginate').append(paginateSearchTax(count_total, id, getUrl));
-                    },
-                    columnDefs: [
-                                { targets: [0, 1, 3,4,5], className: 'dt-center td-content-center' },
-                    ],
-                    order: [0, 'asc'],
-                    responsive: {
-                        details: {
-                            type: 'column',
-                            target: 'tr'
-                        }
-                    },
-                    columns: [
-                        { data: 'id', "render": function (data, type, row, meta) { return meta.row + meta.settings._iDisplayStart + 1; } },
-                        { data: 'Profile_ID_TAX' },
-                        { data: 'Company/Individual' },
-                        { data: 'Branch' },
-                        { data: 'Status' },
-                        { data: 'Order' },
-                    ],
-
-                });
-            document.getElementById(id).focus();
-        });
-        $(document).on('keyup', '.search-data-guest-Visit', function () {
-            var id = $(this).attr('id');
-            var search_value = $(this).val();
-            var table_name = id+'Table';
-            var guest_profile = $('#profile-guest-Visit').val();
-            var type_status = $('#status').val();
-            var total = parseInt($('#get-total-'+id).val());
-            var getUrl = window.location.pathname;
-
-                $('#'+table_name).DataTable().destroy();
-                var table = $('#'+table_name).dataTable({
-                    searching: false,
-                    paging: false,
-                    info: false,
-                    ajax: {
-                    url: '/Visit-guest-search-table',
-                    type: 'POST',
-                    dataType: "json",
-                    cache: false,
-                    data: {
-                        search_value: search_value,
-                        table_name: table_name,
-                        guest_profile: guest_profile,
-                        status: type_status,
-                    },
-                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                },
-                    "initComplete": function (settings,json){
-
-                        if ($('#'+id+'Table .dataTable_empty').length == 0) {
-                            var count = $('#'+id+'Table tr').length - 1;
-                        }else{
-                            var count = 0;
-                        }
-                        if (search_value == '') {
-                            count_total = total;
-                        }else{
-                            count_total = count;
-                        }
-                        $('#'+id+'-paginate').children().remove().end();
-                        $('#'+id+'-showingEntries').text(showingEntriesSearchVisit(1,count_total, id));
-                        $('#'+id+'-paginate').append(paginateSearchVisit(count_total, id, getUrl));
-                    },
-                    columnDefs: [
-                                { targets: [0, 1, 3, 4, 5, 6, 7, 8, 9,10], className: 'dt-center td-content-center' },
-                    ],
-                    order: [0, 'asc'],
-                    responsive: {
-                        details: {
-                            type: 'column',
-                            target: 'tr'
-                        }
-                    },
-                    columns: [
-                        { data: 'id', "render": function (data, type, row, meta) { return meta.row + meta.settings._iDisplayStart + 1; } },
-                        { data: 'ID' },
-                        { data: 'Company' },
-                        { data: 'IssueDate' },
-                        { data: 'ExpirationDate' },
-                        { data: 'CheckIn' },
-                        { data: 'CheckOut' },
-                        { data: 'Discount' },
-                        { data: 'OperatedBy' },
-                        { data: 'Documentstatus' },
-                        { data: 'Order' },
-
-                    ],
-
-                });
-            document.getElementById(id).focus();
-        });
-    </script>
-
-    <script>
-
         function btnstatus(id) {
             jQuery.ajax({
                 type: "GET",

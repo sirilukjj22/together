@@ -261,19 +261,28 @@
                                                 <input type="checkbox" id="trigger1" />
                                                 <label for="trigger1">ติดต่อ / Contact</label>
                                                 <div class="custom-accordion-content">
-                                                    <div class="row my-3">
-                                                        <div class="col-lg-10"></div>
-                                                        <div class="col-lg-2  d-flex justify-content-end align-items-end">
-                                                            <div class="btn-group">
-                                                                <button type="button" class="btn btn-color-green text-white rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                    ทำรายการ &nbsp;
+                                                    <div class="row align-items-center mb-2" >
+                                                        <div class="col">
+                                                            <ol class="breadcrumb d-inline-flex bg-transparent p-0 m-0">
+                                                                <li></li>
+                                                                <li></li>
+                                                                <li></li>
+                                                            </ol>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <div class="dropdown">
+                                                                <button class="btn btn-color-green text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    List
                                                                 </button>
                                                                 <ul class="dropdown-menu border-0 shadow p-3">
                                                                     <li>
-                                                                        <a class="dropdown-item py-2 rounded" data-bs-toggle="modal" data-bs-target="#CreateAgent">เพิ่มตัวแทนบริษัท</a>
+                                                                        <a class="dropdown-item py-2 rounded" href="{{ url('/Company/view/name/contact/'.$Profile_ID) }}">View Name Contact All</a>
                                                                     </li>
                                                                     <li>
-                                                                        <a class="dropdown-item py-2 rounded" href="{{ url('/Company/edit/contact/'.$representative->id) }}">แก้ไขตัวแทนบริษัท</a>
+                                                                        <a class="dropdown-item py-2 rounded" data-bs-toggle="modal" data-bs-target="#CreateAgent">Create Contact</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a class="dropdown-item py-2 rounded" href="{{ url('/Company/edit/contact/'.$representative->id) }}">Edit Contact</a>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -302,7 +311,7 @@
                                                     <div class="row mt-2">
                                                         <div class="col-12">
                                                             <span for="Address">ที่อยู่ / Address</span><br>
-                                                            <textarea type="text" id="addressAgent" name="addressAgent" rows="3" cols="25" class="form-control" aria-label="With textarea" disabled>{{$representative->Address}}</textarea>
+                                                            <textarea type="text"  name="addressAgent" rows="3" cols="25" class="form-control" aria-label="With textarea" disabled>{{$representative->Address}}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="row mt-2">
@@ -415,7 +424,7 @@
                                 </div>
                             </form>
                             <div class="modal fade" id="CreateAgent" tabindex="-1" aria-labelledby="PrenameModalCenterTitle" style="display: none;" aria-hidden="true">
-                                <div class="modal-dialog  modal-lg modal-dialog-centered">
+                                <div class="modal-dialog  modal-lg modal-dialog-centered" >
                                     <div class="modal-content">
                                         <div class="modal-header bg-color-green">
                                             <h5 class="modal-title text-white" id="PrenameModalCenterTitle">Add Contact</h5>
@@ -424,11 +433,11 @@
                                         <form action="{{url('/Company/edit/contact/create/'.$Company->id)}}" method="POST">
                                             @csrf
                                             <div class="modal-body">
-                                                <div class="col-sm-12 col-12">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 ">
                                                     <div id="TitleContact" >
-                                                        <div class="col-sm-12 mt-2">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12  mt-2">
                                                             <div class="row">
-                                                                <div class="col-sm-4 col-4" >
+                                                                <div class="col-lg-4 col-md-12 col-sm-12 " >
                                                                     <span for="prefix">คำนำหน้า / Title</span>
                                                                     <select name="prefix" id="PrefaceSelectContact" class="select22" required>
                                                                             <option value=""></option>
@@ -437,11 +446,11 @@
                                                                             @endforeach
                                                                     </select>
                                                                 </div>
-                                                                <div class="col-sm-4 col-4">
+                                                                <div class="col-lg-4 col-md-12 col-sm-12 ">
                                                                     <span for="first_name">ชื่อ / First Name</span>
                                                                     <input type="text" id="first_nameContact" class="form-control" placeholder="ชื่อ" name="first_nameContact"maxlength="70"  required>
                                                                 </div>
-                                                                <div class="col-sm-4 col-4 ">
+                                                                <div class="col-lg-4 col-md-12 col-sm-12 ">
                                                                     <span for="last_name" >นามสกุล / Last Name</span>
                                                                     <input type="text" id="last_nameContact" class="form-control" placeholder="นามสกุล" name="last_nameContact"maxlength="70"  required>
                                                                 </div>
@@ -463,9 +472,9 @@
                                                         <textarea type="text" id="addressContact" name="addressAgent" rows="3" cols="25" class="form-control" aria-label="With textarea" required></textarea>
                                                     </div>
 
-                                                    <div class="col-sm-12 col-12">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 ">
                                                         <div class="row mt-2">
-                                                            <div class="col-sm-4 col-4">
+                                                            <div class="col-lg-4 col-md-12 col-sm-12 ">
                                                                 <span for="Country">ประเทศ / Country</span>
                                                                 <select name="countrydataC" id="countrySelectContact" class="select22" onchange="showcityAInputContact()">
                                                                     @foreach($country as $item)
@@ -475,7 +484,7 @@
                                                                     @endforeach
                                                                 </select>
                                                             </div>
-                                                            <div class="col-sm-4 col-4" >
+                                                            <div class="col-lg-4 col-md-12 col-sm-12 " >
                                                                 <span for="City">จังหวัด / Province</span>
                                                                 <select name="cityC" id="provinceC" class="select22" onchange="provinceContact()" style="width: 100%;">
                                                                     <option value=""></option>
@@ -484,7 +493,7 @@
                                                                     @endforeach
                                                                 </select>
                                                             </div>
-                                                            <div class="col-sm-4 col-4">
+                                                            <div class="col-lg-4 col-md-12 col-sm-12 ">
                                                                 <span for="Amphures">อำเภอ / District</span>
                                                                 <select name="amphuresC" id="amphuresC" class="select22" onchange="amphuresContact()" >
                                                                     <option value=""></option>
@@ -492,18 +501,18 @@
                                                             </div>
                                                         </div>
                                                         <div class="row mt-2">
-                                                            <div class="col-sm-4 col-4">
+                                                            <div class="col-lg-4 col-md-12 col-sm-12 ">
                                                                 <span for="Tambon">ตำบล / Subdistrict</span>
                                                                 <select name="TambonC" id ="TambonC" class="select22" onchange="TambonContact()" style="width: 100%;">
                                                                     <option value=""></option>
                                                                 </select>
                                                             </div>
-                                                            <div class="col-sm-4 col-4">
+                                                            <div class="col-lg-4 col-md-12 col-sm-12 ">
                                                                 <span for="zip_code">รหัสไปรษณีย์ / Postal Code</span>
                                                                 <select name="zip_codeC" id ="zip_codeC" class="select22"  style="width: 100%;">
                                                                 </select>
                                                             </div>
-                                                            <div class="col-sm-4 col-4">
+                                                            <div class="col-lg-4 col-md-12 col-sm-12 ">
                                                                 <span for="Email">อีเมล์ / Email</span>
                                                                 <input type="text" id="EmailContact" class="form-control"placeholder="อีเมล์" name="EmailAgent"maxlength="70" required>
                                                             </div>
@@ -815,20 +824,7 @@
                                     </div>
                                 </div>
                                 <div style="min-height: 70vh;" class="mt-2">
-                                    <table id="company-TaxTable" class="example ui striped table nowrap unstackable hover">
-                                        <caption class="caption-top">
-                                            <div>
-                                                <div class="flex-end-g2">
-                                                    <label class="entriespage-label">entries per page :</label>
-                                                    <select class="entriespage-button" id="search-per-page-company-Tax" onchange="getPageTax(1, this.value, 'company-Tax')"> <!-- ชือนำหน้าตาราง, ชื่อ Route -->
-                                                        <option value="10" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 10 && @$_GET['table'] == "company-Tax" ? 'selected' : '' }}>10</option>
-                                                        <option value="25" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 25 && @$_GET['table'] == "company-Tax" ? 'selected' : '' }}>25</option>
-                                                        <option value="50" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 50 && @$_GET['table'] == "company-Tax" ? 'selected' : '' }}>50</option>
-                                                        <option value="100" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 100 && @$_GET['table'] == "company-Tax" ? 'selected' : '' }}>100</option>
-                                                    </select>
-                                                    <input class="search-button search-data-company-Tax" id="company-Tax" style="text-align:left;" placeholder="Search" />
-                                                </div>
-                                        </caption>
+                                    <table class="table-together striped  nowrap unstackable hover">
                                         <thead>
                                             <tr>
                                                 <th class="text-center" data-priority="1">No</th>
@@ -836,7 +832,7 @@
                                                 <th  data-priority="1">Company/Individual</th>
                                                 <th class="text-center">Branch</th>
                                                 <th class="text-center">Status</th>
-                                                <th class="text-center">Order</th>
+                                                <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -866,18 +862,18 @@
                                                             @endphp
                                                             <td style="text-align: center;">
                                                                 <div class="btn-group">
-                                                                    <button type="button" class="btn btn-color-green text-white rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">ทำรายการ &nbsp;</button>
+                                                                    <button type="button" class="btn btn-color-green text-white rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">List &nbsp;</button>
                                                                     <ul class="dropdown-menu border-0 shadow p-3">
                                                                         @if ($rolePermission > 0)
                                                                             @if ($canViewProposal == 1)
-                                                                                <li><a class="dropdown-item py-2 rounded" href="{{ url('/Company/viewTax/'.$item->id) }}">ดูรายละเอียด</a></li>
+                                                                                <li><a class="dropdown-item py-2 rounded" href="{{ url('/Company/viewTax/'.$item->id) }}">view</a></li>
                                                                             @endif
                                                                             @if ($canEditProposal == 1)
-                                                                                <li><a class="dropdown-item py-2 rounded" href="{{ url('/Company/editTax/'.$item->id) }}">แก้ไขรายการ</a></li>
+                                                                                <li><a class="dropdown-item py-2 rounded" href="{{ url('/Company/editTax/'.$item->id) }}">Edit</a></li>
                                                                             @endif
                                                                         @else
                                                                             @if ($canViewProposal == 1)
-                                                                                <li><a class="dropdown-item py-2 rounded" href="{{ url('/Company/viewTax/'.$item->id) }}">ดูรายละเอียด</a></li>
+                                                                                <li><a class="dropdown-item py-2 rounded" href="{{ url('/Company/viewTax/'.$item->id) }}">view</a></li>
                                                                             @endif
                                                                         @endif
                                                                     </ul>
@@ -887,21 +883,10 @@
                                                 @endforeach
                                             @endif
                                         </tbody>
-                                        <input type="hidden" id="profile-company-Tax" name="profile-company" value="{{$Company->Profile_ID}}">
-                                        <input type="hidden" id="get-total-company-Tax" value="{{ $company_tax->total() }}">
-                                        <input type="hidden" id="currentPage-company-Tax" value="1">
-                                        <caption class="caption-bottom">
-                                            <div class="md-flex-bt-i-c">
-                                                <p class="py2" id="company-Tax-showingEntries">{{ showingEntriesTableTax($company_tax, 'company-Tax') }}</p>
-                                                    <div id="company-Tax-paginate">
-                                                        {!! paginateTableTax($company_tax, 'company-Tax') !!} <!-- ข้อมูล, ชื่อตาราง -->
-                                                    </div>
-                                            </div>
-                                        </caption>
                                     </table>
                                 </div>
                                 <div class="modal fade" id="CreateCompany" tabindex="-1" aria-labelledby="PrenameModalCenterTitle" style="display: none;" aria-hidden="true">
-                                    <div class="modal-dialog  modal-lg modal-dialog-centered">
+                                    <div class="modal-dialog  modal-lg modal-dialog-centered" style="min-width: 50%">
                                         <div class="modal-content">
                                             <div class="modal-header bg-color-green">
                                                 <h5 class="modal-title text-white" id="PrenameModalCenterTitle">Add tax invoice</h5>
@@ -921,7 +906,7 @@
                                                         <div id="Com" style="display: block">
                                                             <div class="col-sm-12 mt-2">
                                                                 <div class="row">
-                                                                    <div class="col-sm-6 col-6">
+                                                                    <div class="col-lg-6 col-md-12 col-sm-12 ">
                                                                         <label for="Company_type_tax">ประเภทบริษัท / Company Type</label>
                                                                         <select name="Company_type_tax" id="Company_type_tax" class="select21" required>
                                                                             <option value=""></option>
@@ -930,15 +915,15 @@
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
-                                                                    <div class="col-sm-6 col-6">
+                                                                    <div class="col-lg-6 col-md-12 col-sm-12 ">
                                                                         <label for="Company_Name">ชื่อบริษัท / Company Name</label>
                                                                         <input type="text" id="Company_Name_tax" class="form-control" placeholder="ชื่อบริษัท" name="Company_Name_tax" maxlength="70" required>
                                                                     </div>
-                                                                    <div class="col-sm-6 col-6 mt-2">
+                                                                    <div class="col-lg-6 col-md-12 col-sm-12  mt-2">
                                                                         <label for="Branch">สาขา / Company Branch <span>&nbsp;&nbsp;&nbsp;&nbsp; </span><input class="form-check-input" type="radio" name="flexRadioDefaultBranchTax" id="flexRadioDefaultBranchTax"> สำนักงานใหญ่</label>
                                                                         <input type="text" id="BranchTax" name="BranchTax" placeholder="สาขาบริษัท" class="form-control" maxlength="70" required>
                                                                     </div>
-                                                                    <div class="col-sm-6 col-6 mt-2">
+                                                                    <div class="col-lg-6 col-md-12 col-sm-12  mt-2">
                                                                         <label for="Identification">เลขประจำตัวผู้เสียภาษี / Tax identification number</label><br>
                                                                         <input type="text" id="IdentificationCompany" class="form-control idcard" name="Identification" maxlength="17" placeholder="เลขประจำตัวผู้เสียภาษี" required >
                                                                     </div>
@@ -948,7 +933,7 @@
                                                         <div id="Title" style="display: none;">
                                                             <div class="col-sm-12 mt-2">
                                                                 <div class="row">
-                                                                    <div class="col-sm-6 col-6" >
+                                                                    <div class="col-lg-6 col-md-12 col-sm-12 " >
                                                                         <span for="prefix">คำนำหน้า / Title</span>
                                                                         <select name="prefix" id="PrefaceSelectCom" class="select21" disabled required>
                                                                                 <option value=""></option>
@@ -957,30 +942,40 @@
                                                                                 @endforeach
                                                                         </select>
                                                                     </div>
-                                                                    <div class="col-sm-6 col-6">
+                                                                    <div class="col-lg-6 col-md-12 col-sm-12 ">
                                                                         <span for="first_name">ชื่อ / First Name</span>
                                                                         <input type="text" id="first_nameCom" class="form-control" placeholder="ชื่อ" name="first_nameCom"maxlength="70" disabled required>
                                                                     </div>
-                                                                    <div class="col-sm-6 col-6 mt-2">
+                                                                    <div class="col-lg-6 col-md-12 col-sm-12  mt-2">
                                                                         <span for="last_name" >นามสกุล / Last Name</span>
                                                                         <input type="text" id="last_nameCom" class="form-control" placeholder="นามสกุล" name="last_nameCom"maxlength="70" disabled required>
                                                                     </div>
-                                                                    <div class="col-sm-6 col-6 mt-2">
+                                                                    <div class="col-lg-6 col-md-12 col-sm-12  mt-2">
                                                                         <label for="Identification">เลขบัตรประจำตัวประชาชน / Identification number</label><br>
                                                                         <input type="text" id="IdentificationName" class="form-control idcard" name="Identification" maxlength="13" placeholder="เลขประจำตัวผู้เสียภาษี"disabled required >
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        {{-- <div  class="col-sm-12 col-12 row mt-2">
+                                                            <div class="col-lg-4 col-md-4 col-sm-12">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+                                                                    <span class="form-check-label" for="flexRadioDefault1">
+                                                                        ที่อยู่ตามบริษัท
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div> --}}
                                                         <div class="col-sm-12 col-12">
                                                             <span for="Address">ที่อยู่ / Address</span>
                                                             <textarea type="text" id="addressAgent" name="addressAgent" rows="3" cols="25" class="form-control" aria-label="With textarea" required></textarea>
                                                         </div>
                                                         <div class="col-sm-12 col-12">
                                                             <div class="row mt-2">
-                                                                <div class="col-sm-4 col-4">
+                                                                <div class="col-lg-4 col-md-12 col-sm-12 ">
                                                                     <span for="Country">ประเทศ / Country</span>
-                                                                    <select name="countrydataA" id="countrySelectA" class="select21" onchange="showcityAInputTax()">
+                                                                    <select name="countrydataA" id="countrySelectT" class="select21" onchange="showcityAInputTax()">
                                                                         @foreach($country as $item)
                                                                             <option value="{{ $item->ct_nameENG }}" {{ $item->ct_nameENG == 'Thailand' ? 'selected' : '' }}>
                                                                                 {{ $item->ct_nameENG }}
@@ -988,7 +983,7 @@
                                                                         @endforeach
                                                                     </select>
                                                                 </div>
-                                                                <div class="col-sm-4 col-4" >
+                                                                <div class="col-lg-4 col-md-12 col-sm-12" >
                                                                     <span for="City">จังหวัด / Province</span>
                                                                     <select name="cityA" id="provincetax" class="select21" onchange="provinceTax()" style="width: 100%;">
                                                                         <option value=""></option>
@@ -997,7 +992,7 @@
                                                                         @endforeach
                                                                     </select>
                                                                 </div>
-                                                                <div class="col-sm-4 col-4">
+                                                                <div class="col-lg-4 col-md-12 col-sm-12">
                                                                     <span for="Amphures">อำเภอ / District</span>
                                                                     <select name="amphuresA" id="amphuresT" class="select21" onchange="amphuresTax()" >
                                                                         <option value=""></option>
@@ -1005,18 +1000,18 @@
                                                                 </div>
                                                             </div>
                                                             <div class="row mt-2">
-                                                                <div class="col-sm-4 col-4">
+                                                                <div class="col-lg-4 col-md-12 col-sm-12">
                                                                     <span for="Tambon">ตำบล / Subdistrict</span>
                                                                     <select name="TambonA" id ="TambonT" class="select21" onchange="TambonTax()" style="width: 100%;">
                                                                         <option value=""></option>
                                                                     </select>
                                                                 </div>
-                                                                <div class="col-sm-4 col-4">
+                                                                <div class="col-lg-4 col-md-12 col-sm-12">
                                                                     <span for="zip_code">รหัสไปรษณีย์ / Postal Code</span>
                                                                     <select name="zip_codeA" id ="zip_codeT" class="select21"  style="width: 100%;">
                                                                     </select>
                                                                 </div>
-                                                                <div class="col-sm-4 col-4">
+                                                                <div class="col-lg-4 col-md-12 col-sm-12">
                                                                     <span for="Email">อีเมล์ / Email</span>
                                                                     <input type="text" id="EmailAgent" class="form-control"placeholder="อีเมล์" name="EmailAgent"maxlength="70" required>
                                                                 </div>
@@ -1040,6 +1035,100 @@
                                                                 </div>
                                                             </div>
                                                             <script>
+                                                                    document.addEventListener('DOMContentLoaded', function() {
+
+                                                                    const radio1 = document.getElementById('flexRadioDefault3');
+                                                                    radio1.addEventListener('change', function() {
+                                                                        if (radio1.checked) {
+                                                                            var countrySelect =$('#countrySelect').val();
+                                                                            console.log(countrySelect);
+
+                                                                            $('#countrySelectT').val(countrySelect).trigger('change');
+                                                                            var province = document.getElementById('province').value;
+                                                                            var amphures = document.getElementById('amphures').value;
+                                                                            var Tambon = document.getElementById('Tambon').value;
+                                                                            var zip_code = document.getElementById('zip_code').value;
+                                                                            var address = document.getElementById('address').value;
+                                                                            console.log(address);
+
+                                                                            if (countrySelect === 'Thailand') {
+
+                                                                                jQuery.ajax({
+                                                                                    type: "GET",
+                                                                                    url: "{!! url('/Company/provincesT/" + province + "') !!}",
+                                                                                    datatype: "JSON",
+                                                                                    async: false,
+                                                                                    success: function(result) {
+                                                                                        jQuery.each(result.data, function(key, value) {
+                                                                                            var provinceA = new Option(value.name_th, value.id);
+                                                                                            if (value.id == province) {
+                                                                                                provinceA.selected = true;
+                                                                                            }
+                                                                                            $('#provincetax').append(provinceA);
+                                                                                        });
+                                                                                    },
+                                                                                })
+
+                                                                                jQuery.ajax({
+                                                                                    type: "GET",
+                                                                                    url: "{!! url('/Company/amphuresT/" + province + "') !!}",
+                                                                                    datatype: "JSON",
+                                                                                    async: false,
+                                                                                    success: function(result) {
+                                                                                        jQuery.each(result.data, function(key, value) {
+                                                                                            var amphuresA = new Option(value.name_th, value.id);
+                                                                                            if (value.id == amphures) {
+                                                                                                amphuresA.selected = true;
+                                                                                            }
+                                                                                            console.log(amphuresA);
+                                                                                            $('#amphuresT').append(amphuresA);
+                                                                                        });
+                                                                                    },
+                                                                                })
+
+
+
+                                                                                $.ajax({
+                                                                                    type: "GET",
+                                                                                    url: "{!! url('/Company/TambonT/" + amphures + "') !!}",
+                                                                                    datatype: "JSON",
+                                                                                    async: false,
+                                                                                    success: function(result) {
+                                                                                        jQuery.each(result.data, function(key, value) {
+                                                                                            var TambonA = new Option(value.name_th, value.id);
+                                                                                            if (value.id == Tambon) {
+                                                                                                TambonA.selected = true;
+                                                                                            }
+                                                                                            $('#TambonT').append(TambonA);
+
+                                                                                        });
+                                                                                    },
+                                                                                })
+                                                                                $.ajax({
+                                                                                    type: "GET",
+                                                                                    url: "{!! url('/Company/districtT/" + Tambon + "') !!}",
+                                                                                    datatype: "JSON",
+                                                                                    async: false,
+                                                                                    success: function(result) {
+                                                                                        console.log(result);
+                                                                                        jQuery.each(result.data, function(key, value) {
+                                                                                            var zip_codeA = new Option(value.zip_code, value.zip_code);
+                                                                                            if (value.zip_code == zip_code) {
+                                                                                                zip_codeA.selected = true;
+                                                                                            }
+                                                                                            $('#zip_codeT').append(zip_codeA);
+                                                                                            console.log(zip_codeA);
+                                                                                        });
+                                                                                    },
+                                                                                })
+                                                                            } else {
+                                                                                $('#provincetax, #amphuresT, #TambonT, #zip_codeT').empty();
+                                                                                $('#provincetax, #amphuresT, #TambonT, #zip_codeT').prop('disabled', true); // ปิดการใช้งาน
+                                                                            }
+                                                                            $('#addressAgent').val(address);
+                                                                            }
+                                                                        });
+                                                                    });
                                                                 function showTaxInput() {
                                                                     var TaxSelectA = document.getElementById("TaxSelectA");
                                                                     var Company_type_tax = document.getElementById("Company_type_tax");
@@ -1108,9 +1197,6 @@
                                                                         amphuresSelect.disabled = false;
                                                                         tambonSelect.disabled = false;
                                                                         zipCodeSelect.disabled = false;
-
-                                                                        // เรียกใช้ฟังก์ชัน select_amphures() เพื่อเปิดการใช้งาน select box ที่มี id เป็น amphures, Tambon, และ zip_code
-                                                                        amphuresT();
                                                                     }
                                                                 }
                                                                 function provinceTax(){
@@ -1263,20 +1349,7 @@
                             </div>
                             <div class="tab-pane fade" id="nav-Visit" role="tabpanel" rel="0">
                                 <div style="min-height: 70vh;" class="mt-2">
-                                    <table id="company-VisitTable" class="example2 ui striped table nowrap unstackable hover">
-                                        <caption class="caption-top">
-                                            <div>
-                                                <div class="flex-end-g2">
-                                                    <label class="entriespage-label">entries per page :</label>
-                                                    <select class="entriespage-button" id="search-per-page-company-Visit" onchange="getPageVisit(1, this.value, 'company-Visit')">
-                                                        <option value="10" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 10 && @$_GET['table'] == "company-Visit" ? 'selected' : '' }}>10</option>
-                                                        <option value="25" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 25 && @$_GET['table'] == "company-Visit" ? 'selected' : '' }}>25</option>
-                                                        <option value="50" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 50 && @$_GET['table'] == "company-Visit" ? 'selected' : '' }}>50</option>
-                                                        <option value="100" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 100 && @$_GET['table'] == "company-Visit" ? 'selected' : '' }}>100</option>
-                                                    </select>
-                                                    <input class="search-button search-data-company-Visit" id="company-Visit" style="text-align:left;" placeholder="Search" />
-                                                </div>
-                                        </caption>
+                                    <table class="table-together striped table nowrap unstackable hover">
                                         <thead>
                                             <tr>
                                                 <th class="text-center" data-priority="1">No</th>
@@ -1289,7 +1362,7 @@
                                                 <th class="text-center">Discount </th>
                                                 <th class="text-center">Operated By</th>
                                                 <th class="text-center">Document status</th>
-                                                <th class="text-center">Order</th>
+                                                <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1339,7 +1412,7 @@
                                                     </td>
                                                     <td style="text-align: center;">
                                                         <div class="btn-group">
-                                                            <button type="button" class="btn btn-color-green text-white rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">ทำรายการ &nbsp;</button>
+                                                            <button type="button" class="btn btn-color-green text-white rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">List &nbsp;</button>
                                                             <ul class="dropdown-menu border-0 shadow p-3">
                                                                 <li><a class="dropdown-item py-2 rounded" target="_bank" href="{{ url('/Proposal/Quotation/cover/document/PDF/'.$item->id) }}">Export</a></li>
                                                             </ul>
@@ -1349,39 +1422,14 @@
                                                 @endforeach
                                             @endif
                                         </tbody>
-                                        <input type="hidden" id="profile-company-Visit" name="profile-company" value="{{$Company->Profile_ID}}">
-                                        <input type="hidden" id="get-total-company-Visit" value="{{ $Quotation->total() }}">
-                                        <input type="hidden" id="currentPage-company-Visit" value="1">
-                                        <caption class="caption-bottom">
-                                            <div class="md-flex-bt-i-c">
-                                                <p class="py2" id="company-Visit-showingEntries">{{ showingEntriesTableVisit($Quotation, 'company-Visit') }}</p>
-                                                    <div id="company-Visit-paginate">
-                                                        {!! paginateTableVisit($Quotation, 'company-Visit') !!} <!-- ข้อมูล, ชื่อตาราง -->
-                                                    </div>
-                                            </div>
-                                        </caption>
                                     </table>
                                 </div>
                             </div>
                             <div class="tab-pane fade "id="nav-Contract" role="tabpanel" rel="0">
-
                             </div>
                             <div class="tab-pane fade" id="nav-User" role="tabpanel" rel="0">
                                 <div style="min-height: 70vh;" class="mt-2">
-                                    <caption class="caption-top">
-                                        <div>
-                                            <div class="flex-end-g2">
-                                                <label class="entriespage-label">entries per page :</label>
-                                                <select class="entriespage-button" id="search-per-page-company-Log" onchange="getPageLog(1, this.value, 'company-Log')"> <!-- ชือนำหน้าตาราง, ชื่อ Route -->
-                                                    <option value="10" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 10 && @$_GET['table'] == "company-Log" ? 'selected' : '' }}>10</option>
-                                                    <option value="25" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 25 && @$_GET['table'] == "company-Log" ? 'selected' : '' }}>25</option>
-                                                    <option value="50" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 50 && @$_GET['table'] == "company-Log" ? 'selected' : '' }}>50</option>
-                                                    <option value="100" class="bg-[#f7fffc] text-[#2C7F7A]" {{ !empty(@$_GET['perPage']) && @$_GET['perPage'] == 100 && @$_GET['table'] == "company-Log" ? 'selected' : '' }}>100</option>
-                                                </select>
-                                                <input class="search-button search-data-company-Log" id="company-Log" style="text-align:left;" placeholder="Search" />
-                                            </div>
-                                    </caption>
-                                    <table id="company-LogTable" class="example ui striped table nowrap unstackable hover">
+                                    <table class="table-together striped table nowrap unstackable hover">
                                         <thead>
                                             <tr>
                                                 <th  class="text-center">No</th>
@@ -1392,6 +1440,8 @@
                                                 <th  class="text-center">Content</th>
                                             </tr>
                                         </thead>
+
+
                                         <tbody>
                                             @if(!empty($log))
                                                 @foreach($log as $key => $item)
@@ -1400,12 +1450,12 @@
                                                     <td style="text-align: left;">{{$item->Category}}</td>
                                                     <td style="text-align: center;">{{$item->type}}</td>
                                                     <td style="text-align: center;">{{@$item->userOperated->name}}</td>
-                                                    <td style="text-align: center;">{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</td>
+                                                    <td style="text-align: center;" >{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</td>
                                                     @php
                                                         // แยกข้อมูล content ออกเป็น array
                                                         $contentArray = explode('+', $item->content);
                                                     @endphp
-                                                    <td style="text-align: left;">
+                                                    <td style="text-align: left;" class="tleft">
 
                                                         <b style="color:#0000FF ">{{$item->Category}}</b>
                                                         @foreach($contentArray as $contentItem)
@@ -1417,17 +1467,6 @@
                                             @endif
                                         </tbody>
                                     </table>
-                                    <input type="hidden" id="profile-company-Log" name="profile-company" value="{{$Company->Profile_ID}}">
-                                    <input type="hidden" id="get-total-company-Log" value="{{ $log->total() }}">
-                                    <input type="hidden" id="currentPage-company-Log" value="1">
-                                    <caption class="caption-bottom">
-                                        <div class="md-flex-bt-i-c">
-                                            <p class="py2" id="company-Log-showingEntries">{{ showingEntriesTableLog($log, 'company-Log') }}</p>
-                                                <div id="company-Log-paginate">
-                                                    {!! paginateTableLog($log, 'company-Log') !!} <!-- ข้อมูล, ชื่อตาราง -->
-                                                </div>
-                                        </div>
-                                    </caption>
                                 </div>
                             </div>
                         </div>
@@ -1437,566 +1476,294 @@
         </div>
     </div>
     @include('script.script')
-
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/formatNumber.js')}}"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get the radio buttons
-        const Branch = document.getElementById('flexRadioDefaultBranch');
-
-        Branch.addEventListener('change', function() {
-            if (Branch.checked) {
-                $('#Branch').val('สำนักงานใหญ่');
-            }
-        });
-    });
-    $(document).ready(function() {
-        var countrySelect = $('#countrySelect');
-        var TaxSelectA = countrySelect.val(); // ใช้ jQuery เพื่อเลือก element
-        var amphuresSelect = document.getElementById("amphures");
-        var tambonSelect = document.getElementById("Tambon");
-        var zipCodeSelect = document.getElementById("zip_code");
-        var province = document.getElementById("province");
-
-        if (TaxSelectA != "Thailand") {
-            // ปิดการใช้งาน select box ที่มี id เป็น amphures, Tambon, และ zip_code
-            amphuresSelect.disabled = true;
-            tambonSelect.disabled = true;
-            zipCodeSelect.disabled = true;
-            province.disabled = true;
-
-        } else if (TaxSelectA == "Thailand"){
-            // ปิดการใช้งาน select box ที่มี id เป็น amphures, Tambon, และ zip_code
-            amphuresSelect.disabled = false;
-            tambonSelect.disabled = false;
-            zipCodeSelect.disabled = false;
-            province.disabled = false;
-        }
-    });
-    $(document).ready(function() {
-        $('.select2').select2({
-            placeholder: "Please select an option"
-        });
-        $('.select21').select2({
-            dropdownParent: $("#CreateCompany"),
-            placeholder: "Please select an option"
-        });
-        $('.select22').select2({
-            dropdownParent: $("#CreateAgent"),
-            placeholder: "Please select an option"
-        });
-
-    });
-    function showcityInput() {
-        var countrySelect = document.getElementById("countrySelect");
-        var amphuresSelect = document.getElementById("amphures");
-        var tambonSelect = document.getElementById("Tambon");
-        var zipCodeSelect = document.getElementById("zip_code");
-        var province = document.getElementById("province");
-
-        // เช็คค่าที่ถูกเลือกใน dropdown list เมือง
-        if (countrySelect.value !== "Thailand") {
-            amphuresSelect.disabled = true;
-            tambonSelect.disabled = true;
-            zipCodeSelect.disabled = true;
-            province.disabled = true;
-        } else if (countrySelect.value === "Thailand") {
-
-            amphuresSelect.disabled = false;
-            tambonSelect.disabled = false;
-            zipCodeSelect.disabled = false;
-            province.disabled = false;
-            select_amphures();
-            select_province();
-            select_Tambon();
-            $('#zip_code').empty();
-        }
-    }
-    function select_province() {
-        var provinceID = $('#province').val();
-        jQuery.ajax({
-            type: "GET",
-            url: "{!! url('/Company/amphures/" + provinceID + "') !!}",
-            datatype: "JSON",
-            async: false,
-            success: function(result) {
-                jQuery('#amphures').children().remove().end();
-                //ตัวแปร
-                $('#amphures').append(new Option('', ''));
-                jQuery.each(result.data, function(key, value) {
-                    var amphures = new Option(value.name_th, value.id);
-                    $('#amphures').append(amphures);
-                });
-            },
-        })
-    }
-
-    function select_amphures() {
-        var amphuresID = $('#amphures').val();
-        $.ajax({
-            type: "GET",
-            url: "{!! url('/Company/Tambon/" + amphuresID + "') !!}",
-            datatype: "JSON",
-            async: false,
-            success: function(result) {
-                jQuery('#Tambon').children().remove().end();
-                $('#Tambon').append(new Option('', ''));
-                jQuery.each(result.data, function(key, value) {
-                    var Tambon = new Option(value.name_th, value.id);
-                    $('#Tambon ').append(Tambon);
-                });
-            },
-        })
-    }
-
-    function select_Tambon() {
-        var Tambon = $('#Tambon').val();
-        $.ajax({
-            type: "GET",
-            url: "{!! url('/Company/districts/" + Tambon + "') !!}",
-            datatype: "JSON",
-            async: false,
-            success: function(result) {
-                jQuery('#zip_code').children().remove().end();
-                $('#zip_code').append(new Option('', ''));
-                jQuery.each(result.data, function(key, value) {
-                    var zip_code = new Option(value.zip_code, value.zip_code);
-                    $('#zip_code ').append(zip_code);
-                });
-            },
-        })
-    }
-    function confirmSubmit(event) {
-        event.preventDefault(); // Prevent the form from submitting
-        var Company_Name = $('#Company_Name').val();
-        var Branch = $('#Branch').val();
-        var message = `หากบันทึกข้อมูลบริษัท ${Company_Name} สาขา ${Branch} หรือไม่`;
-        Swal.fire({
-            title: "คุณต้องการบันทึกใช่หรือไม่?",
-            text: message,
-            icon: "question",
-            showCancelButton: true,
-            confirmButtonText: "บันทึกข้อมูล",
-            cancelButtonText: "ยกเลิก",
-            confirmButtonColor: "#28a745",
-            dangerMode: true
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // If user confirms, submit the form
-                document.getElementById("myForm").submit();
-            }
-        });
-    }
-    var alertMessage = "{{ session('alert_') }}";
-    var alerterror = "{{ session('error_') }}";
-    if (alertMessage) {
-        // แสดง SweetAlert ทันทีเมื่อโหลดหน้าเว็บ
-        Swal.fire({
-            icon: 'success',
-            title: alertMessage,
-            showConfirmButton: false,
-            timer: 1500
-        });
-    }
-    if (alerterror) {
-        Swal.fire({
-            icon: 'error',
-            title: alerterror,
-            showConfirmButton: false,
-            timer: 1500
-        });
-    }
-    </script>
+    <script type="text/javascript" src="{{ asset('assets/helper/searchTable.js')}}"></script>
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        function formatPhoneNumber(value) {
-            // ลบตัวอักษรที่ไม่ใช่ตัวเลขออก
-            value = value.replace(/\D/g, "");
-            let formattedValue = "";
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the radio buttons
+            const Branch = document.getElementById('flexRadioDefaultBranch');
 
-            // ฟอร์แมตหมายเลขโทรศัพท์
-            if (value.length > 0) {
-                formattedValue += value.substring(0, 3); // xxx
-            }
-            if (value.length > 3) {
-                formattedValue += "-" + value.substring(3, 6); // xxx-xxx
-            }
-            if (value.length > 6) {
-                formattedValue += "-" + value.substring(6, 10); // xxx-xxx-xxxx
-            }
+            Branch.addEventListener('change', function() {
+                if (Branch.checked) {
+                    $('#Branch').val('สำนักงานใหญ่');
+                }
+            });
+        });
+        $(document).ready(function() {
+            var countrySelect = $('#countrySelect');
+            var TaxSelectA = countrySelect.val(); // ใช้ jQuery เพื่อเลือก element
+            var amphuresSelect = document.getElementById("amphures");
+            var tambonSelect = document.getElementById("Tambon");
+            var zipCodeSelect = document.getElementById("zip_code");
+            var province = document.getElementById("province");
 
-            return formattedValue;
+            if (TaxSelectA != "Thailand") {
+                // ปิดการใช้งาน select box ที่มี id เป็น amphures, Tambon, และ zip_code
+                amphuresSelect.disabled = true;
+                tambonSelect.disabled = true;
+                zipCodeSelect.disabled = true;
+                province.disabled = true;
+
+            } else if (TaxSelectA == "Thailand"){
+                // ปิดการใช้งาน select box ที่มี id เป็น amphures, Tambon, และ zip_code
+                amphuresSelect.disabled = false;
+                tambonSelect.disabled = false;
+                zipCodeSelect.disabled = false;
+                province.disabled = false;
+            }
+        });
+        $(document).ready(function() {
+            $('.select2').select2({
+                placeholder: "Please select an option"
+            });
+            $('.select21').select2({
+                dropdownParent: $("#CreateCompany"),
+                placeholder: "Please select an option"
+            });
+            $('.select22').select2({
+                dropdownParent: $("#CreateAgent"),
+                placeholder: "Please select an option"
+            });
+
+        });
+        function showcityInput() {
+            var countrySelect = document.getElementById("countrySelect");
+            var amphuresSelect = document.getElementById("amphures");
+            var tambonSelect = document.getElementById("Tambon");
+            var zipCodeSelect = document.getElementById("zip_code");
+            var province = document.getElementById("province");
+
+            // เช็คค่าที่ถูกเลือกใน dropdown list เมือง
+            if (countrySelect.value !== "Thailand") {
+                amphuresSelect.disabled = true;
+                tambonSelect.disabled = true;
+                zipCodeSelect.disabled = true;
+                province.disabled = true;
+            } else if (countrySelect.value === "Thailand") {
+
+                amphuresSelect.disabled = false;
+                tambonSelect.disabled = false;
+                zipCodeSelect.disabled = false;
+                province.disabled = false;
+                select_amphures();
+                select_province();
+                select_Tambon();
+                $('#zip_code').empty();
+            }
+        }
+        function select_province() {
+            var provinceID = $('#province').val();
+            jQuery.ajax({
+                type: "GET",
+                url: "{!! url('/Company/amphures/" + provinceID + "') !!}",
+                datatype: "JSON",
+                async: false,
+                success: function(result) {
+                    jQuery('#amphures').children().remove().end();
+                    //ตัวแปร
+                    $('#amphures').append(new Option('', ''));
+                    jQuery.each(result.data, function(key, value) {
+                        var amphures = new Option(value.name_th, value.id);
+                        $('#amphures').append(amphures);
+                    });
+                },
+            })
         }
 
-        function updatePhoneInput(event) {
-            const input = event.target;
-            input.value = formatPhoneNumber(input.value);
+        function select_amphures() {
+            var amphuresID = $('#amphures').val();
+            $.ajax({
+                type: "GET",
+                url: "{!! url('/Company/Tambon/" + amphuresID + "') !!}",
+                datatype: "JSON",
+                async: false,
+                success: function(result) {
+                    jQuery('#Tambon').children().remove().end();
+                    $('#Tambon').append(new Option('', ''));
+                    jQuery.each(result.data, function(key, value) {
+                        var Tambon = new Option(value.name_th, value.id);
+                        $('#Tambon ').append(Tambon);
+                    });
+                },
+            })
         }
 
-        // ฟังก์ชันที่ใช้ในการเพิ่มฟิลด์ใหม่
-        document.getElementById('add-input').addEventListener('click', function() {
-            var container = document.getElementById('phone-inputs-container');
-            var index = container.querySelectorAll('.input-group').length;
-            var newInputGroup = document.createElement('div');
-            newInputGroup.classList.add('input-group', 'mb-3');
-            newInputGroup.innerHTML = `
-                <input type="text" name="phone[]" class="form-control phone-input" maxlength="12" data-index="${index}" data-old-value="">
-                <button type="button" class="btn btn-outline-danger remove-input"><i class="bi bi-x-circle" style="width:100%;"></i></button>
-            `;
-            container.appendChild(newInputGroup);
-            addRemoveButtonListener(newInputGroup.querySelector('.remove-input'));
-            addInputChangeListener(newInputGroup.querySelector('.phone-input'));
-            updateIndices();
-        });
+        function select_Tambon() {
+            var Tambon = $('#Tambon').val();
+            $.ajax({
+                type: "GET",
+                url: "{!! url('/Company/districts/" + Tambon + "') !!}",
+                datatype: "JSON",
+                async: false,
+                success: function(result) {
+                    jQuery('#zip_code').children().remove().end();
+                    $('#zip_code').append(new Option('', ''));
+                    jQuery.each(result.data, function(key, value) {
+                        var zip_code = new Option(value.zip_code, value.zip_code);
+                        $('#zip_code ').append(zip_code);
+                    });
+                },
+            })
+        }
+        function confirmSubmit(event) {
+            event.preventDefault(); // Prevent the form from submitting
+            var Company_Name = $('#Company_Name').val();
+            var Branch = $('#Branch').val();
+            var message = `หากบันทึกข้อมูลบริษัท ${Company_Name} สาขา ${Branch} หรือไม่`;
+            Swal.fire({
+                title: "คุณต้องการบันทึกใช่หรือไม่?",
+                text: message,
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonText: "บันทึกข้อมูล",
+                cancelButtonText: "ยกเลิก",
+                confirmButtonColor: "#28a745",
+                dangerMode: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If user confirms, submit the form
+                    document.getElementById("myForm").submit();
+                }
+            });
+        }
+        var alertMessage = "{{ session('alert_') }}";
+        var alerterror = "{{ session('error_') }}";
+        if (alertMessage) {
+            // แสดง SweetAlert ทันทีเมื่อโหลดหน้าเว็บ
+            Swal.fire({
+                icon: 'success',
+                title: alertMessage,
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+        if (alerterror) {
+            Swal.fire({
+                icon: 'error',
+                title: alerterror,
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+        </script>
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function formatPhoneNumber(value) {
+                // ลบตัวอักษรที่ไม่ใช่ตัวเลขออก
+                value = value.replace(/\D/g, "");
+                let formattedValue = "";
 
-        // ฟังก์ชันที่ใช้ในการเพิ่มฟิลด์แฟกซ์
-        document.getElementById('add-fax').addEventListener('click', function() {
-            var container = document.getElementById('fax-inputs-container');
-            var index = container.querySelectorAll('.input-group').length;
-            var newInputGroup = document.createElement('div');
-            newInputGroup.classList.add('input-group', 'mb-3');
-            newInputGroup.innerHTML = `
-                <input type="text" name="fax[]" class="form-control fax-input" maxlength="11" data-index="${index}" data-old-value="">
-                <button type="button" class="btn btn-outline-danger remove-input"><i class="bi bi-x-circle" style="width:100%;"></i></button>
-            `;
-            container.appendChild(newInputGroup);
-            addRemoveButtonListener(newInputGroup.querySelector('.remove-input'));
-            addInputChangeListener(newInputGroup.querySelector('.fax-input'));
-            updateIndices();
-        });
+                // ฟอร์แมตหมายเลขโทรศัพท์
+                if (value.length > 0) {
+                    formattedValue += value.substring(0, 3); // xxx
+                }
+                if (value.length > 3) {
+                    formattedValue += "-" + value.substring(3, 6); // xxx-xxx
+                }
+                if (value.length > 6) {
+                    formattedValue += "-" + value.substring(6, 10); // xxx-xxx-xxxx
+                }
 
-        // เพิ่ม event listener ให้กับปุ่มลบที่มีอยู่
-        document.querySelectorAll('.remove-input').forEach(function(button) {
-            addRemoveButtonListener(button);
-        });
+                return formattedValue;
+            }
 
-        // เพิ่ม event listener ให้กับ input field ที่มีอยู่
-        document.querySelectorAll('.phone-input').forEach(function(input) {
-            addInputChangeListener(input);
-        });
+            function updatePhoneInput(event) {
+                const input = event.target;
+                input.value = formatPhoneNumber(input.value);
+            }
 
-        // ฟังก์ชันที่ใช้ในการเพิ่ม event listener ให้กับปุ่มลบ
-        function addRemoveButtonListener(button) {
-            button.addEventListener('click', function() {
-                var container = button.closest('.input-group');
-                container.parentElement.removeChild(container);
+            // ฟังก์ชันที่ใช้ในการเพิ่มฟิลด์ใหม่
+            document.getElementById('add-input').addEventListener('click', function() {
+                var container = document.getElementById('phone-inputs-container');
+                var index = container.querySelectorAll('.input-group').length;
+                var newInputGroup = document.createElement('div');
+                newInputGroup.classList.add('input-group', 'mb-3');
+                newInputGroup.innerHTML = `
+                    <input type="text" name="phone[]" class="form-control phone-input" maxlength="12" data-index="${index}" data-old-value="">
+                    <button type="button" class="btn btn-outline-danger remove-input"><i class="bi bi-x-circle" style="width:100%;"></i></button>
+                `;
+                container.appendChild(newInputGroup);
+                addRemoveButtonListener(newInputGroup.querySelector('.remove-input'));
+                addInputChangeListener(newInputGroup.querySelector('.phone-input'));
                 updateIndices();
             });
-        }
 
-        // ฟังก์ชันที่ใช้ในการเพิ่ม event listener ให้กับ input field
-        function addInputChangeListener(input) {
-            input.addEventListener('input', updatePhoneInput);
-        }
-
-        // ฟังก์ชันที่ใช้ในการอัปเดตดัชนีของ input fields
-        function updateIndices() {
-            var phoneInputs = document.querySelectorAll('.phone-input');
-            phoneInputs.forEach(function(input, index) {
-                input.setAttribute('data-index', index);
-                input.setAttribute('name', `phone[${index}]`);
+            // ฟังก์ชันที่ใช้ในการเพิ่มฟิลด์แฟกซ์
+            document.getElementById('add-fax').addEventListener('click', function() {
+                var container = document.getElementById('fax-inputs-container');
+                var index = container.querySelectorAll('.input-group').length;
+                var newInputGroup = document.createElement('div');
+                newInputGroup.classList.add('input-group', 'mb-3');
+                newInputGroup.innerHTML = `
+                    <input type="text" name="fax[]" class="form-control fax-input" maxlength="11" data-index="${index}" data-old-value="">
+                    <button type="button" class="btn btn-outline-danger remove-input"><i class="bi bi-x-circle" style="width:100%;"></i></button>
+                `;
+                container.appendChild(newInputGroup);
+                addRemoveButtonListener(newInputGroup.querySelector('.remove-input'));
+                addInputChangeListener(newInputGroup.querySelector('.fax-input'));
+                updateIndices();
             });
 
-            var faxInputs = document.querySelectorAll('.fax-input');
-            faxInputs.forEach(function(input, index) {
-                input.setAttribute('data-index', index);
-                input.setAttribute('name', `fax[${index}]`);
+            // เพิ่ม event listener ให้กับปุ่มลบที่มีอยู่
+            document.querySelectorAll('.remove-input').forEach(function(button) {
+                addRemoveButtonListener(button);
             });
-        }
-    });
-</script>
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<!-- dataTable -->
-<script src="https://cdn.datatables.net/2.1.2/js/dataTables.js"></script>
-<script src="https://cdn.datatables.net/2.1.2/js/dataTables.semanticui.js"></script>
-<script src="https://cdn.datatables.net/responsive/3.0.2/js/dataTables.responsive.js"></script>
-<script src="https://cdn.datatables.net/responsive/3.0.2/js/responsive.semanticui.js"></script>
-<script type="text/javascript" src="{{ asset('assets/helper/searchTableCompany.js')}}"></script>
-    <script>
 
-        $(document).on('keyup', '.search-data-company-Tax', function () {
-            var id = $(this).attr('id');
-            var search_value = $(this).val();
-            var table_name = id+'Table';
-            var guest_profile = $('#profile-company-Tax').val();
-            var type_status = $('#status').val();
-            var total = parseInt($('#get-total-'+id).val());
-            var getUrl = window.location.pathname;
-            console.log(guest_profile);
+            // เพิ่ม event listener ให้กับ input field ที่มีอยู่
+            document.querySelectorAll('.phone-input').forEach(function(input) {
+                addInputChangeListener(input);
+            });
 
-
-                $('#'+table_name).DataTable().destroy();
-                var table = $('#'+table_name).dataTable({
-                    searching: false,
-                    paging: false,
-                    info: false,
-                    ajax: {
-                    url: '/tax-company-search-table',
-                    type: 'POST',
-                    dataType: "json",
-                    cache: false,
-                    data: {
-                        search_value: search_value,
-                        table_name: table_name,
-                        guest_profile: guest_profile,
-                        status: type_status,
-                    },
-                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                },
-                    "initComplete": function (settings,json){
-
-                        if ($('#'+id+'Table .dataTable_empty').length == 0) {
-                            var count = $('#'+id+'Table tr').length - 1;
-                        }else{
-                            var count = 0;
-                        }
-                        if (search_value == '') {
-                            count_total = total;
-                        }else{
-                            count_total = count;
-                        }
-                        $('#'+id+'-paginate').children().remove().end();
-                        $('#'+id+'-showingEntries').text(showingEntriesSearchTax(1,count_total, id));
-                        $('#'+id+'-paginate').append(paginateSearchTax(count_total, id, getUrl));
-                    },
-                    columnDefs: [
-                                { targets: [0, 1, 3,4,5], className: 'dt-center td-content-center' },
-                    ],
-                    order: [0, 'asc'],
-                    responsive: {
-                        details: {
-                            type: 'column',
-                            target: 'tr'
-                        }
-                    },
-                    columns: [
-                        { data: 'id', "render": function (data, type, row, meta) { return meta.row + meta.settings._iDisplayStart + 1; } },
-                        { data: 'Profile_ID_TAX' },
-                        { data: 'Company/Individual' },
-                        { data: 'Branch' },
-                        { data: 'Status' },
-                        { data: 'Order' },
-                    ],
-
+            // ฟังก์ชันที่ใช้ในการเพิ่ม event listener ให้กับปุ่มลบ
+            function addRemoveButtonListener(button) {
+                button.addEventListener('click', function() {
+                    var container = button.closest('.input-group');
+                    container.parentElement.removeChild(container);
+                    updateIndices();
                 });
-            document.getElementById(id).focus();
-        });
-        function btnstatusTax(id) {
-            jQuery.ajax({
-                type: "GET",
-                url: "{!! url('/company/change-status/tax/" + id + "') !!}",
-                datatype: "JSON",
-                async: false,
-                success: function(result) {
-                    Swal.fire('บันทึกข้อมูลเรียบร้อย!', '', 'success');
-                    location.reload();
-                },
-            });
-        }
-        function btnstatusContact(id) {
-            jQuery.ajax({
-                type: "GET",
-                url: "{!! url('/company/change-status/Contact/" + id + "') !!}",
-                datatype: "JSON",
-                async: false,
-                success: function(result) {
-                    Swal.fire('บันทึกข้อมูลเรียบร้อย!', '', 'success');
-                    location.reload();
-                },
-            });
-        }
+            }
 
-    </script>
-    <script>
-        const table_name = ['company-VisitTable', 'company-TaxTable','company-LogTable'];
-        $(document).ready(function() {
-            for (let index = 0; index < table_name.length; index++) {
-                new DataTable('#'+table_name[index], {
-                    searching: false,
-                    paging: false,
-                    info: false,
-                    columnDefs: [{
-                        className: 'dtr-control',
-                        orderable: true,
-                        target: null,
-                    }],
-                    order: [0, 'asc'],
-                    responsive: {
-                        details: {
-                            type: 'column',
-                            target: 'tr'
-                        }
-                    }
+            // ฟังก์ชันที่ใช้ในการเพิ่ม event listener ให้กับ input field
+            function addInputChangeListener(input) {
+                input.addEventListener('input', updatePhoneInput);
+            }
+
+            // ฟังก์ชันที่ใช้ในการอัปเดตดัชนีของ input fields
+            function updateIndices() {
+                var phoneInputs = document.querySelectorAll('.phone-input');
+                phoneInputs.forEach(function(input, index) {
+                    input.setAttribute('data-index', index);
+                    input.setAttribute('name', `phone[${index}]`);
+                });
+
+                var faxInputs = document.querySelectorAll('.fax-input');
+                faxInputs.forEach(function(input, index) {
+                    input.setAttribute('data-index', index);
+                    input.setAttribute('name', `fax[${index}]`);
                 });
             }
         });
-
         function nav(id) {
-            for (let index = 0; index < table_name.length; index++) {
-                $('#'+table_name[index]).DataTable().destroy();
-                new DataTable('#'+table_name[index], {
-                    searching: false,
-                    paging: false,
-                    info: false,
-                    columnDefs: [{
-                        className: 'dtr-control',
-                        orderable: true,
-                        target: null,
-                    }],
-                    order: [0, 'asc'],
-                    responsive: {
-                        details: {
-                            type: 'column',
-                            target: 'tr'
-                        }
-                    }
-                });
-            }
+            $('.table-together').DataTable().destroy();
+            var table = $(".table-together").DataTable({
+                paging: true,
+                searching: true,
+                ordering: true,
+                info: true,
+                responsive: {
+                details: {
+                    type: "column",
+                    target: "tr"
+                }
+                }, drawCallback: function() {
+                    $('.dropdown-toggle').dropdown();
+                }
+            });
+            $('.dropdown-menu').appendTo('body');
+            hideLabel();
+
         }
-
-        $(document).on('keyup', '.search-data-company-Visit', function () {
-
-            var id = $(this).attr('id');
-            var search_value = $(this).val();
-            var table_name = id+'Table';
-            var guest_profile = $('#profile-company-Visit').val();
-            var type_status = $('#status').val();
-            var total = parseInt($('#get-total-'+id).val());
-            var getUrl = window.location.pathname;
-
-                $('#'+table_name).DataTable().destroy();
-                var table = $('#'+table_name).dataTable({
-                    searching: false,
-                    paging: false,
-                    info: false,
-                    ajax: {
-                    url: '/Visit-company-search-table',
-                    type: 'POST',
-                    dataType: "json",
-                    cache: false,
-                    data: {
-                        search_value: search_value,
-                        table_name: table_name,
-                        guest_profile: guest_profile,
-                        status: type_status,
-                    },
-                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                },
-                    "initComplete": function (settings,json){
-
-                        if ($('#'+id+'Table .dataTable_empty').length == 0) {
-                            var count = $('#'+id+'Table tr').length - 1;
-                        }else{
-                            var count = 0;
-                        }
-                        if (search_value == '') {
-                            count_total = total;
-                        }else{
-                            count_total = count;
-                        }
-                        $('#'+id+'-paginate').children().remove().end();
-                        $('#'+id+'-showingEntries').text(showingEntriesSearchVisit(1,count_total, id));
-                        $('#'+id+'-paginate').append(paginateSearchVisit(count_total, id, getUrl));
-                    },
-                    columnDefs: [
-                                { targets: [0, 1, 3, 4, 5, 6, 7, 8, 9,10], className: 'dt-center td-content-center' },
-                    ],
-                    order: [0, 'asc'],
-                    responsive: {
-                        details: {
-                            type: 'column',
-                            target: 'tr'
-                        }
-                    },
-                    columns: [
-                        { data: 'id', "render": function (data, type, row, meta) { return meta.row + meta.settings._iDisplayStart + 1; } },
-                        { data: 'ID' },
-                        { data: 'Company' },
-                        { data: 'IssueDate' },
-                        { data: 'ExpirationDate' },
-                        { data: 'CheckIn' },
-                        { data: 'CheckOut' },
-                        { data: 'Discount' },
-                        { data: 'OperatedBy' },
-                        { data: 'Documentstatus' },
-                        { data: 'Order' },
-
-                    ],
-
-                });
-            document.getElementById(id).focus();
-        });
-
-
-
-
-        $(document).on('keyup', '.search-data-company-Log', function () {
-            var id = $(this).attr('id');
-            var search_value = $(this).val();
-            var table_name = id+'Table';
-            var guest_profile = $('#profile-company-Log').val();
-            var type_status = $('#status').val();
-            var total = parseInt($('#get-total-'+id).val());
-            var getUrl = window.location.pathname;
-            console.log(guest_profile);
-
-
-                $('#'+table_name).DataTable().destroy();
-                var table = $('#'+table_name).dataTable({
-                    searching: false,
-                    paging: false,
-                    info: false,
-                    ajax: {
-                    url: '/Log-company-search-table',
-                    type: 'POST',
-                    dataType: "json",
-                    cache: false,
-                    data: {
-                        search_value: search_value,
-                        table_name: table_name,
-                        guest_profile: guest_profile,
-                        status: type_status,
-                    },
-                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                },
-                    "initComplete": function (settings,json){
-
-                        if ($('#'+id+'Table .dataTable_empty').length == 0) {
-                            var count = $('#'+id+'Table tr').length - 1;
-                        }else{
-                            var count = 0;
-                        }
-                        if (search_value == '') {
-                            count_total = total;
-                        }else{
-                            count_total = count;
-                        }
-                        $('#'+id+'-paginate').children().remove().end();
-                        $('#'+id+'-showingEntries').text(showingEntriesSearchLog(1,count_total, id));
-                        $('#'+id+'-paginate').append(paginateSearchLog(count_total, id, getUrl));
-                    },
-                    columnDefs: [
-                                { targets: [0, 2, 3,4], className: 'dt-center td-content-center' },
-                    ],
-                    order: [0, 'asc'],
-                    responsive: {
-                        details: {
-                            type: 'column',
-                            target: 'tr'
-                        }
-                    },
-                    columns: [
-                        { data: 'id', "render": function (data, type, row, meta) { return meta.row + meta.settings._iDisplayStart + 1; } },
-                        { data: 'Category' },
-                        { data: 'type' },
-                        { data: 'Created_by' },
-                        { data: 'created_at' },
-                        { data: 'Content' },
-                    ],
-
-                });
-            document.getElementById(id).focus();
-        });
     </script>
 @endsection

@@ -1,4 +1,4 @@
-/* Remove text selection */
+Remove text selection
 .no-select {
   user-select: none; /* Standard CSS property for most browsers */
   -webkit-user-select: none; /* Safari and Chrome */
@@ -245,7 +245,7 @@ section {
   background-color: rgb(73, 184, 179);
   background-image: linear-gradient(
     to right,
-    rgba(12, 67, 67, 0.862),
+    rgb(4, 8, 8),
     rgba(8, 97, 92, 0.685)
   );
   box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
@@ -1474,128 +1474,4 @@ textarea {
 #editOverBillOptions input[type="checkbox"] {
   margin-right: 8px;
   accent-color: #2c7f7a;
-}
-
-/* Data Table */
-.dataTables_wrapper {
-  box-sizing: border-box;
-  width: 100%;
-}
-
-.dt-layout-row {
-  display: flex;
-  justify-content: end;
-  width: 100%;
-  padding: 0.5rem 0;
-  flex-wrap: wrap;
-  height: 100%;
-}
-
-.dt-layout-row:nth-child(3) {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 0.5rem 0;
-  flex-wrap: wrap;
-  height: 100%;
-}
-
-@media (max-width: 750px) {
-  .dt-layout-row:nth-child(3) {
-    display: grid;
-    place-content: center;
-    text-align: center;
-    gap: 0.3rem;
-  }
-}
-
-div.dt-container {
-  position: relative;
-  height: 100%;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-}
-
-div.dt-container div.dt-layout-row.dt-layout-table {
-  display: block;
-}
-
-div.dt-container .dt-search input {
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  border: 1px solid rgba(0, 103, 96, 0.459);
-  background-color: rgba(107, 172, 167, 0.1);
-  color: inherit;
-  margin-left: 3px;
-  border-radius: 7px;
-  height: 2.4em;
-  padding: 0.5em;
-  border-radius: 0.25em;
-  font-size: 1em;
-}
-
-div.dt-container select.dt-input {
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  border: 1px solid rgba(0, 103, 96, 0.459);
-  background-color: rgba(107, 172, 167, 0.1);
-  color: inherit;
-  height: 2.4em;
-  padding: 0.5em;
-  border-radius: 0.25em;
-  font-size: 1em;
-  margin-right: 5px;
-}
-
-.pagination .active {
-  background-color: var(--dexter-primary-color);
-  border: none;
-}
-
-.pagination.menu {
-  display: flex;
-  justify-content: center;
-  gap: 0.1em;
-}
-
-.dt-paging-button {
-  width: 2.1rem;
-  height: 2.3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0px;
-}
-
-.dt-paging-button:focus {
-  border: none;
-  box-shadow: none;
-}
-
-.page-link.previous {
-  display: none;
-}
-
-.page-link.next {
-  display: none;
-}
-
-.page-link.first {
-  border-radius: 7px 0 0 7px;
-}
-
-.page-link.last {
-  border-radius: 0 7px 7px 0;
-}
-
-@media (max-width: 700px) {
-  .flex-between {
-    justify-content: center;
-  }
-
-  .dt-layout-row {
-    justify-content: center;
-  }
-}
-
-tfoot tr th {
-  text-align: center !important;
 }

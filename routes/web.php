@@ -223,11 +223,13 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/Company/save', 'save')->name('Company.save');
         Route::get('/Company/change-status/{id}', 'changeStatus')->name('Company.changeStatus');
         Route::get('/Company/view/{id}', 'view')->name('Company.view');
+        Route::get('/Company/view/name/contact/{id}', 'contact')->name('Company.contact');
         Route::post('/Company/Company_edit/Company_update/{id}', 'update')->name('Company_update');
         Route::get('/Company/provinces/{id}', 'provinces')->name('Company.provinces');
         Route::get('/Company/amphuresA/{id}', 'amphuresA')->name('Company.amphuresAgent');
         Route::get('/Company/TambonA/{id}', 'TambonA')->name('Company.TambonAgent');
         Route::get('/Company/districtsA/{id}', 'districtA')->name('Company.districtAgent');
+        Route::get('/Company/provincesT/{id}', 'provincesT')->name('Company.provincesT');
         Route::get('/Company/amphuresT/{id}', 'amphuresT')->name('Company.amphuresT');
         Route::get('/Company/TambonT/{id}', 'TambonT')->name('Company.TambonT');
         Route::get('/Company/districtT/{id}', 'districtT')->name('Company.districtT');
@@ -280,6 +282,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/guest/change-status/{id}', 'guestStatus')->name('guestStatus');
         Route::post('/guest/edit/update/{id}', 'guest_update')->name('guest_edit_update');
 
+
+        Route::get('/guest/provincesA/{id}', 'provinces')->name('guest.provinces');
+        Route::get('/guest/amphuresA/{id}', 'amphuresA')->name('guest.amphuresAgent');
+        Route::get('/guest/TambonA/{id}', 'TambonA')->name('guest.TambonAgent');
+        Route::get('/guest/districtsA/{id}', 'districtA')->name('guest.districtAgent');
         Route::post('guest-search-table', 'search_table')->name('guest-search-table');
         Route::post('guest-paginate-table', 'paginate_table')->name('guest-paginate-table');
 

@@ -17,7 +17,7 @@ function showingEntriesSearch($page, $total, $table_name) {
     return html;
 }
 
-// Paginate 
+// Paginate
 function paginateSearch($total, $table, $link) {
     var total = $total;
     var currentPage = parseInt($('#currentPage-' + $table).val());
@@ -25,7 +25,7 @@ function paginateSearch($total, $table, $link) {
     var previousPageUrl = currentPage;
     var nextPageUrl = currentPage;
     var table = $table;
-    var html = '';    
+    var html = '';
 
     if (currentPage > 1) {
         previousPageUrl = currentPage - 1;
@@ -51,7 +51,7 @@ function paginateSearch($total, $table, $link) {
             // {
                 html += '<a class="" href="#">...</a>';
             // }
-        }        
+        }
 
         for ($i = Math.max(1, currentPage - 2); $i <= Math.min(Math.ceil(total / perPage), currentPage + 2); $i++)
         {
@@ -63,7 +63,7 @@ function paginateSearch($total, $table, $link) {
             }
         }
 
-        if (currentPage < Math.ceil(total / perPage) - 2) 
+        if (currentPage < Math.ceil(total / perPage) - 2)
         {
             if (currentPage < Math.ceil(total / perPage) - 3)
             {
@@ -138,7 +138,7 @@ function getPage(page, perPage, table_n) {
                 { data: 'date_into' },
                 { data: 'btn_action' },
             ],
-    
+
         });
     } else {
         var table = $('#' + table_name).dataTable({
@@ -176,12 +176,35 @@ function getPage(page, perPage, table_n) {
                 { data: 'date' },
                 { data: 'agoda_outstanding' },
             ],
-    
+
         });
-    }    
+    }
 
     $('#' + table_n + '-paginate').children().remove().end();
     $('#' + table_n + '-showingEntries').text(showingEntriesSearch(page, total, table_n));
     $('#' + table_n + '-paginate').append(paginateSearch(total, table_n, getUrl));
+
+}
+
+function hideLabel() {
+
+
+    // เปลี่ยน placeholder สำหรับฟิลด์ค้นหาทั้งหมดในทุก DataTable
+    $('input[type="search"]').each(function () {
+        $(this).attr("placeholder", "Type to search...");
+        var searchID = $(this).attr('id');
+        var text = searchID.split('-');
+        var number = text[2];
+
+        $('label[for="dt-length-'+ number +'"], label[for="'+ searchID +'"]').hide();
+
+    });
+
+    $(window).on("resize", function () {
+        $.fn.dataTable
+        .tables({ visible: true, api: true })
+        .columns.adjust()
+        .responsive.recalc();
+    });
 
 }

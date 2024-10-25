@@ -13,7 +13,7 @@
     <title>TOGETHER DEVELOPMENT</title>
     <link rel="icon" href="../../../image/Logo1-01.png" type="image/x-icon" />
     <!-- Favicon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.css">
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.css"> --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.semanticui.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.2/css/responsive.semanticui.css">
 
@@ -27,7 +27,7 @@
 
     <!-- table design css -->
     <link rel="stylesheet" href="{{ asset('assets/css/dataTables.min.css')}}?v={{ time() }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/semantic.min.css')}}?v={{ time() }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/css/semantic.min.css')}}?v={{ time() }}"> --}}
     <link rel="stylesheet" href="{{ asset('assets/css/dataTables.semanticui.css')}}?v={{ time() }}">
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.semanticui.css')}}?v={{ time() }}">
     <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
@@ -397,16 +397,38 @@
     <script src="{{ asset('assets/bundles/libscripts.bundle.js') }}"></script>
 
     <!-- Plugin Js -->
-    <script src="{{ asset('assets/bundles/dataTables.bundle.js') }}"></script>
+    {{-- <script src="{{ asset('assets/bundles/dataTables.bundle.js') }}"></script> --}}
     <script src="{{ asset('assets/bundles/select2.bundle.js') }}"></script>
     <script src="{{ asset('assets/plugin/select2-searchInputPlaceholder.js') }}"></script>
     <script src="{{ asset('assets/bundles/bootstraptagsinput.bundle.js') }}"></script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> --}}
+    <script src="https://cdn.datatables.net/2.1.2/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.1.2/js/dataTables.semanticui.js"></script>
+    <script src="https://cdn.datatables.net/responsive/3.0.2/js/dataTables.responsive.js"></script>
+    <script src="https://cdn.datatables.net/responsive/3.0.2/js/responsive.semanticui.js"></script>
 
     <!-- Jquery Page Js -->
     <script src="{{ asset('assets/js/template.js') }}"></script>
 
     <script>
+        $(document).ready(function() {
+            var table = $(".table-together").DataTable({
+                paging: true,
+                searching: true,
+                ordering: true,
+                info: true,
+                responsive: {
+                details: {
+                    type: "column",
+                    target: "tr"
+                }
+                }, drawCallback: function() {
+                    $('.dropdown-toggle').dropdown();
+                }
+            });
+            $('.dropdown-menu').appendTo('body');
+            hideLabel();
+        });
         $(document).ready(function() {
 
             $('#myTable').addClass('nowrap').dataTable({

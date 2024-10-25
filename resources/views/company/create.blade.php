@@ -382,6 +382,7 @@
         </div>
     </div>
     @include('script.script')
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/formatNumber.js')}}"></script>
     <script>

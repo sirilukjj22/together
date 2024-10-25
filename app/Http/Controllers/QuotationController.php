@@ -1844,8 +1844,8 @@ class QuotationController extends Controller
         }else{
             $Quotation_ID =$ProposalID;
         }
-        try {
-            if ($preview == 1) {
+        if ($preview == 1) {
+            try {
                 $datarequest = [
                     'Proposal_ID' => $data['Quotation_ID'] ?? null,
                     'IssueDate' => $data['IssueDate'] ?? null,
@@ -2168,32 +2168,36 @@ class QuotationController extends Controller
                 $view= $template->name;
                 $pdf = FacadePdf::loadView('quotationpdf.preview',$data);
                 return $pdf->stream();
-            }else{
-                $datarequest = [
-                    'Proposal_ID' => $data['Quotation_ID'] ?? null,
-                    'IssueDate' => $data['IssueDate'] ?? null,
-                    'Expiration' => $data['Expiration'] ?? null,
-                    'Selectdata' => $data['selectdata'] ?? null,
-                    'Data_ID' => $data['Guest'] ?? $data['Company'] ?? null,
-                    'Adult' => $data['Adult'] ?? null,
-                    'Children' => $data['Children'] ?? null,
-                    'Mevent' => $data['Mevent'] ?? null,
-                    'Mvat' => $data['Mvat'] ?? null,
-                    'DiscountAmount' => $data['DiscountAmount'] ?? null,
-                    'ProductIDmain' => $data['ProductIDmain'] ?? null,
-                    'pax' => $data['pax'] ?? null,
-                    'Quantitymain' => $data['Quantitymain'] ?? null,
-                    'priceproductmain' => $data['priceproductmain'] ?? null,
-                    'discountmain' => $data['discountmain'] ?? null,
-                    'Unitmain' => $data['Unitmain'] ?? null,
-                    'comment' => $data['comment'] ?? null,
-                    'PaxToTalall' => $data['PaxToTalall'] ?? null,
-                    'FreelancerMember' => $data['Freelancer_member'] ?? null,
-                    'Checkin' => $data['Checkin'] ?? null,
-                    'Checkout' => $data['Checkout'] ?? null,
-                    'Day' => $data['Day'] ?? null,
-                    'Night' => $data['Night'] ?? null,
-                ];
+            } catch (\Throwable $th) {
+                return redirect()->route('Proposal.create')->with('error', $e->getMessage());
+            }
+        }else{
+            $datarequest = [
+                'Proposal_ID' => $data['Quotation_ID'] ?? null,
+                'IssueDate' => $data['IssueDate'] ?? null,
+                'Expiration' => $data['Expiration'] ?? null,
+                'Selectdata' => $data['selectdata'] ?? null,
+                'Data_ID' => $data['Guest'] ?? $data['Company'] ?? null,
+                'Adult' => $data['Adult'] ?? null,
+                'Children' => $data['Children'] ?? null,
+                'Mevent' => $data['Mevent'] ?? null,
+                'Mvat' => $data['Mvat'] ?? null,
+                'DiscountAmount' => $data['DiscountAmount'] ?? null,
+                'ProductIDmain' => $data['ProductIDmain'] ?? null,
+                'pax' => $data['pax'] ?? null,
+                'Quantitymain' => $data['Quantitymain'] ?? null,
+                'priceproductmain' => $data['priceproductmain'] ?? null,
+                'discountmain' => $data['discountmain'] ?? null,
+                'Unitmain' => $data['Unitmain'] ?? null,
+                'comment' => $data['comment'] ?? null,
+                'PaxToTalall' => $data['PaxToTalall'] ?? null,
+                'FreelancerMember' => $data['Freelancer_member'] ?? null,
+                'Checkin' => $data['Checkin'] ?? null,
+                'Checkout' => $data['Checkout'] ?? null,
+                'Day' => $data['Day'] ?? null,
+                'Night' => $data['Night'] ?? null,
+            ];
+            try {
                 {   // log
                     $quantities = $datarequest['Quantitymain'] ?? [];
                     $discounts = $datarequest['discountmain'] ?? [];
@@ -2405,6 +2409,10 @@ class QuotationController extends Controller
                         $save->save();
                     }
                 }
+            } catch (\Throwable $th) {
+                return redirect()->route('Proposal.create')->with('error', $e->getMessage());
+            }
+            try {
                 {   //save
                     $save = new Quotation();
                     $save->Quotation_ID = $Quotation_ID;
@@ -2472,6 +2480,10 @@ class QuotationController extends Controller
                         return redirect()->route('Proposal.index')->with('success', 'ใบเสนอราคายังไม่ถูกสร้าง');
                     }
                 }
+            } catch (\Throwable $th) {
+                return redirect()->route('Proposal.create')->with('error', $e->getMessage());
+            }
+            try {
                 {   //PDF
                     $Selectdata = $datarequest['Selectdata'];
                     $Data_ID = $datarequest['Data_ID'];
@@ -2853,10 +2865,11 @@ class QuotationController extends Controller
                         }
                     }
                 }
+            } catch (\Throwable $th) {
+                return redirect()->route('Proposal.create')->with('error', $e->getMessage());
             }
-        } catch (\Exception $e) {
-            return redirect()->route('Proposal.index')->with('error', $e->getMessage());
         }
+        return redirect()->route('Proposal.index')->with('success', 'บันทึกข้อมูลเรียบร้อย');
     }
     //------------------------------แก้ไข--------------------
     public function edit($id)
